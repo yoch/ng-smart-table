@@ -20,4 +20,5 @@
 - `npm run pack:lib` — génère le tarball dans `dist-pack/` (copier `lib.tgz` pour `consumer-smoke`).
 - `npm run consumer:smoke` — installe le paquet packagé dans la mini-app `consumer-smoke` et vérifie un build production.
 - Le dossier `consumer-smoke` n’a pas de `package-lock.json` versionné : la dépendance `file:../dist-pack/lib.tgz` change d’empreinte à chaque `npm pack` ; en CI on utilise `npm install`, pas `npm ci`.
-- `npm audit --omit=dev` — actuellement non vert sur le workspace Angular 18 : npm signale des vulnérabilités `@angular/* <=18.2.14` et propose une montée majeure vers Angular 21. Ne pas appliquer `npm audit fix --force` dans une release de durcissement ; le paquet publié garde Angular en `peerDependencies` et ne bundle pas Angular. Revoir ce point avec une validation consommateur Angular 20/21 avant d'élargir ou changer la toolchain.
+- `npm audit --omit=dev` — vert sur le workspace (Angular et outillage sont en `devDependencies` uniquement).
+- `npm run audit:pack` — audit des dépendances réellement publiées (`lodash`, `tslib`) via installation du tarball packagé.

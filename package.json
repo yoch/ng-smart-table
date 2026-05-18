@@ -18,9 +18,10 @@
     "release": "npm run build:lib && npm run publish:dist",
     "publish:dist": "npm publish --access=public ./dist/ng2-smart-table",
     "publish:beta": "npm run build:lib && npm publish --access=public --tag next ./dist/ng2-smart-table",
+    "audit:pack": "bash scripts/audit-pack.sh",
     "changelog": "standard-changelog -p angular"
   },
-  "dependencies": {
+  "devDependencies": {
     "@angular/animations": "^18.2.0",
     "@angular/common": "^18.2.0",
     "@angular/compiler": "^18.2.0",
@@ -29,13 +30,6 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
-    "highlight.js": "^11.10.0",
-    "lodash": "^4.17.21",
-    "rxjs": "~7.8.1",
-    "tslib": "^2.6.3",
-    "zone.js": "~0.14.10"
-  },
-  "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.0",
     "@angular-eslint/builder": "^18.4.0",
     "@angular-eslint/eslint-plugin": "^18.4.0",
@@ -56,8 +50,13 @@
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "highlight.js": "^11.10.0",
+    "lodash": "^4.17.21",
     "ng-packagr": "^18.2.0",
+    "rxjs": "~7.8.1",
     "standard-changelog": "^2.0.27",
-    "typescript": "~5.5.4"
+    "tslib": "^2.6.3",
+    "typescript": "~5.5.4",
+    "zone.js": "~0.14.10"
   }
 }

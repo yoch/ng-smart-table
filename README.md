@@ -58,7 +58,7 @@ npm run publish:dist      # publication (après npm login)
 3. `npm run build:ci`
 4. `npm run pack:lib` — inspecter `dist-pack/*.tgz` (`LICENSE.txt`, `README.md`, pas de `.angular` / `coverage` / sources de démo)
 5. `npm run consumer:smoke`
-6. `npm audit --omit=dev` — traiter ou documenter les alertes (souvent chaîne transitive côté démo/outillage)
+6. `npm audit --omit=dev` et `npm run audit:pack` — vulnérabilités workspace (outillage) et paquet publié
 
 Publier d’abord une prérelease (`2.0.0-beta.x` / dist-tag `next`), puis promouvoir en stable après validation dans une app réelle.
 

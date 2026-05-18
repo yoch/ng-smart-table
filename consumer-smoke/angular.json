@@ -21,7 +21,8 @@
             "inlineStyleLanguage": "css",
             "assets": [],
             "styles": ["src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["lodash"]
           },
           "configurations": {
             "production": {
