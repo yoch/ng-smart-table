@@ -31,7 +31,7 @@ export class TitleComponent implements OnChanges {
       if (!changes.source.firstChange) {
         this.dataChangedSub.unsubscribe();
       }
-      this.dataChangedSub = this.source.onChanged().subscribe((dataChanges) => {
+      this.dataChangedSub = this.source.onChanged().subscribe((_dataChanges) => {
         const sortConf = this.source.getSort();
 
         if (sortConf.length > 0 && sortConf[0]['field'] === this.column.id) {
@@ -39,10 +39,6 @@ export class TitleComponent implements OnChanges {
         } else {
           this.currentDirection = '';
         }
-
-        sortConf.forEach((fieldConf: any) => {
-
-        });
       });
     }
   }

@@ -34,6 +34,6 @@ export class SelectFilterComponent extends DefaultFilter implements OnInit {
         distinctUntilChanged(),
         debounceTime(this.delay)
       )
-      .subscribe((value: string) => this.setFilter());
+      .subscribe((_value: string) => this.setFilter());
   }
 }

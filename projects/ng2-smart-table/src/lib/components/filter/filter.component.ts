@@ -38,7 +38,7 @@ export class FilterComponent extends FilterDefault implements OnChanges, OnDestr
       if (!changes.source.firstChange) {
         this.dataChangedSub.unsubscribe();
       }
-      this.dataChangedSub = this.source.onChanged().subscribe((dataChanges) => {
+      this.dataChangedSub = this.source.onChanged().subscribe((_dataChanges) => {
         const filterConf = this.source.getFilter();
         if (filterConf && filterConf.filters && filterConf.filters.length === 0) {
           this.query = '';
@@ -46,7 +46,7 @@ export class FilterComponent extends FilterDefault implements OnChanges, OnDestr
           // add a check for existing filters an set the query if one exists for this column
           // this covers instances where the filter is set by user code while maintaining existing functionality
         } else if (filterConf && filterConf.filters && filterConf.filters.length > 0) {
-          filterConf.filters.forEach((k: any, v: any) => {
+          filterConf.filters.forEach((k: any) => {
             if (k.field == this.column.id) {
               this.query = k.search;
             }

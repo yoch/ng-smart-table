@@ -19,7 +19,7 @@ export abstract class DataSource {
     this.emitOnChanged('refresh');
   }
 
-  load(data: Array<any>): Promise<any> {
+  load(_data: Array<any>): Promise<any> {
     this.emitOnChanged('load');
     return Promise.resolve();
   }
@@ -64,7 +64,7 @@ export abstract class DataSource {
     return Promise.resolve();
   }
 
-  update(element: any, values: any): Promise<any> {
+  update(element: any, _values: any): Promise<any> {
     this.emitOnUpdated(element);
     this.emitOnChanged('update');
     return Promise.resolve();

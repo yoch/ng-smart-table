@@ -192,7 +192,7 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
     this.emitSelectRow(row);
   }
 
-  onSelectAllRows($event: any) {
+  onSelectAllRows(_$event: any) {
     this.isAllSelected = !this.isAllSelected;
     this.grid.selectAllRows(this.isAllSelected);
 
@@ -231,15 +231,15 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
     return deepExtend({}, this.defaultSettings, this.settings);
   }
 
-  changePage($event: any) {
+  changePage(_$event: any) {
     this.resetAllSelector();
   }
 
-  sort($event: any) {
+  sort(_$event: any) {
     this.resetAllSelector();
   }
 
-  filter($event: any) {
+  filter(_$event: any) {
     this.resetAllSelector();
   }
 

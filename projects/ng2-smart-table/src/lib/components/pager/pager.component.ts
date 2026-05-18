@@ -169,7 +169,7 @@ export class PagerComponent implements OnChanges {
     }
   }
 
-  onChangePerPage(event: any) {
+  onChangePerPage(_event: any) {
     if (this.currentPerPage) {
 
       if (typeof this.currentPerPage === 'string' && this.currentPerPage.toLowerCase() === 'all') {

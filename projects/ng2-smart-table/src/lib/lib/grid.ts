@@ -126,7 +126,7 @@ export class Grid {
           this.dataSet.createNewRow();
         });
       }
-    }).catch((err) => {
+    }).catch((_err) => {
       // doing nothing
     });
 
@@ -153,7 +153,7 @@ export class Grid {
           row.isInEditing = false;
         });
       }
-    }).catch((err) => {
+    }).catch((_err) => {
       // doing nothing
     });
 
@@ -174,7 +174,7 @@ export class Grid {
     const deferred = new Deferred();
     deferred.promise.then(() => {
       this.source.remove(row.getData());
-    }).catch((err) => {
+    }).catch((_err) => {
       // doing nothing
     });
 
