@@ -17,7 +17,7 @@
     "consumer:smoke": "bash scripts/consumer-smoke.sh",
     "release": "npm run build:lib && npm run publish:dist",
     "publish:dist": "npm publish --access=public ./dist/ng2-smart-table",
-    "publish:beta": "npm run build:lib && npm publish --access=public --tag next ./dist/ng2-smart-table",
+    "publish:beta": "bash scripts/publish-beta.sh",
     "audit:pack": "bash scripts/audit-pack.sh",
     "changelog": "standard-changelog -p angular"
   },

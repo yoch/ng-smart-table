@@ -60,7 +60,7 @@ npm run publish:dist      # publish (after npm login)
 5. `npm run consumer:smoke`
 6. `npm audit --omit=dev` and `npm run audit:pack` — workspace tooling and published package vulnerabilities
 
-Publish a prerelease first (`2.0.0-beta.x` / dist-tag `next`), then promote to stable after validating in a real app.
+Publish a prerelease first with `npm run publish:beta` (updates both `next` and `latest`), then promote to stable with `npm run publish:dist` after validating in a real app.
 
 See [DEV_DOCS.md](DEV_DOCS.md) for release details.
 

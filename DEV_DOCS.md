@@ -9,8 +9,8 @@
 3. Bump the version in [projects/ng2-smart-table/package.json](projects/ng2-smart-table/package.json) (the published package). The root `package.json` is private and only serves the workspace.
 4. Run `npm run changelog` (requires a git tag for the previous version).
 5. Commit with message style `release: vX.Y.Z`.
-6. First beta publish: `npm run publish:beta` (npm tag `next`, e.g. version `2.0.0-beta.1`).
-7. Stable publish: `npm run publish:dist` (requires `npm login` and an authenticated `@yoch` npm account).
+6. Beta publish: `npm run publish:beta` — publishes with dist-tag `next` and moves `latest` to the same version (default install stays on the current beta).
+7. Stable publish: `npm run publish:dist` (requires `npm login` and an authenticated `@yoch` npm account`; sets `latest` via default publish tag).
 8. Optional: `npm run docs:gh-pages` for the GitHub Pages demo.
 9. Git tag `vX.Y.Z`, then `git push --tags`.
 

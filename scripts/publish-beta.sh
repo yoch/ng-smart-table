@@ -10,5 +10,12 @@ if ! npm whoami >/dev/null 2>&1; then
 fi
 
 npm run build:lib
-npm publish --access=public --tag next ./dist/ng2-smart-table
-echo "Published @yoch/ng-smart-table@$(node -p "require('./dist/ng2-smart-table/package.json').version") (dist-tag next)"
+PKG=./dist/ng2-smart-table
+VERSION="$(node -p "require('./dist/ng2-smart-table/package.json').version")"
+NAME="$(node -p "require('./dist/ng2-smart-table/package.json').name")"
+
+npm publish --access=public --tag next "$PKG"
+# Keep `latest` in sync with the current beta so `npm install @yoch/ng-smart-table` matches @next.
+npm dist-tag add "${NAME}@${VERSION}" latest
+
+echo "Published ${NAME}@${VERSION} (dist-tags: next, latest)"
