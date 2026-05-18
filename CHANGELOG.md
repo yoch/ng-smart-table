@@ -1,3 +1,9 @@
+## [2.0.0-beta.2] - 2026-05-18
+
+### Chore
+
+- English documentation and metadata for the published package README.
+
 ## [2.0.0-beta.1] - 2026-05-18
 
 ### Chore
