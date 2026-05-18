@@ -1,17 +1,36 @@
 {
-  "name": "ng2-smart-table",
-  "version": "1.7.2",
-  "description": "Angular Smart Table",
+  "name": "@ng-smart-table/ng-smart-table",
+  "version": "2.0.0-beta.0",
+  "description": "Angular Smart Table (fork moderne de ng2-smart-table)",
+  "keywords": [
+    "angular",
+    "table",
+    "grid",
+    "smart-table",
+    "ng2-smart-table",
+    "data-table"
+  ],
   "author": "akveo",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/yggg/ng2-smart-table#readme",
+  "bugs": {
+    "url": "https://github.com/yggg/ng2-smart-table/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yggg/ng2-smart-table.git"
+  },
   "dependencies": {
-    "lodash": "^4.17.10",
-    "tslib": "^2.0.0"
+    "lodash": "^4.17.21",
+    "tslib": "^2.6.3"
   },
   "peerDependencies": {
-    "ng2-completer": "^9.0.1",
-    "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0",
-    "@angular/forms": "^10.0.0"
+    "@angular/common": ">=18 <22",
+    "@angular/core": ">=18 <22",
+    "@angular/forms": ">=18 <22",
+    "rxjs": "^7.8.0"
   }
 }

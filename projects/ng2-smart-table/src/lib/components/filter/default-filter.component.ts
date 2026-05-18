@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 
 import {FilterDefault} from "./filter-default";
 
@@ -34,5 +34,4 @@ import {FilterDefault} from "./filter-default";
   `,
 })
 export class DefaultFilterComponent extends FilterDefault {
-  @Input() query: string;
 }

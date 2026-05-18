@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 
 import { LocalDataSource } from '../local/local.data-source';
 import { ServerSourceConf } from './server-source.conf';
@@ -28,13 +28,14 @@ export class ServerDataSource extends LocalDataSource {
   }
 
   getElements(): Promise<any> {
-    return this.requestElements()
-      .pipe(map(res => {
+    return firstValueFrom(
+      this.requestElements().pipe(map(res => {
         this.lastRequestCount = this.extractTotalFromResponse(res);
         this.data = this.extractDataFromResponse(res);
 
         return this.data;
-      })).toPromise();
+      })),
+    );
   }
 
   /**

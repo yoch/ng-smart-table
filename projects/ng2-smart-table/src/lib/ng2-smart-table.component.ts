@@ -117,13 +117,14 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
     this.isHideHeader = this.grid.getSetting('hideHeader');
     this.isHideSubHeader = this.grid.getSetting('hideSubHeader');
     this.isPagerDisplay = this.grid.getSetting('pager.display');
-    this.isPagerDisplay = this.grid.getSetting('pager.display');
     this.perPageSelect = this.grid.getSetting('pager.perPageSelect');
     this.rowClassFunction = this.grid.getSetting('rowClassFunction');
   }
 
   ngOnDestroy(): void {
+    this.grid?.detach();
     this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   selectRow(index: number, switchPageToSelectedRowPage: boolean = this.grid.getSetting('switchPageToSelectedRowPage')): void {

@@ -1,20 +1,47 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# compiled output
+# --- Dependencies ---
+/node_modules
+
+# --- Angular / CLI ---
+.angular/
+**/.angular/
+
+# compiled output (workspace)
 /dist
 /tmp
 /out-tsc
+**/.ng_pkg_build
+
 # Only exists if Bazel was run
 /bazel-out
 
-# dependencies
-/node_modules
+# --- Tests & coverage ---
+/coverage
+**/coverage
+libpeerconnection.log
+testem.log
 
-# profiling files
+# --- Profiling ---
 chrome-profiler-events.json
 speed-measure-plugin.json
 
-# IDEs and editors
+# --- npm / pack ---
+*.tgz
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist-pack/
+consumer-smoke/node_modules/
+consumer-smoke/dist/
+
+# --- TypeScript / tooling ---
+*.tsbuildinfo
+.eslintcache
+
+# --- IDEs and editors ---
 /.idea
 .project
 .classpath
@@ -31,16 +58,16 @@ speed-measure-plugin.json
 !.vscode/extensions.json
 .history/*
 
-# misc
+# --- misc ---
 /.sass-cache
 /connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
 /typings
 
-# System Files
+# --- Local env (secrets / machine-specific) ---
+.env
+.env.*.local
+!.env.example
+
+# --- System files ---
 .DS_Store
 Thumbs.db

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Ng2CompleterModule } from 'ng2-completer';
+
+import { NgstSmartCompleterComponent } from '../completer/ngst-smart-completer.component';
 
 import { FilterComponent } from './filter.component';
 import { DefaultFilterComponent } from "./default-filter.component";
@@ -30,7 +31,7 @@ const FILTER_COMPONENTS = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2CompleterModule,
+    NgstSmartCompleterComponent,
   ],
   declarations: [
     ...FILTER_COMPONENTS,

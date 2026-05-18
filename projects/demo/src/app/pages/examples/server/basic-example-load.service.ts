@@ -7,7 +7,7 @@ export class BasicExampleLoadService {
 
   // emulating request to the server
   getData(): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         resolve(this.generateData());
       }, 2000);

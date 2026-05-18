@@ -205,9 +205,22 @@ export class Grid {
   }
 
   shouldProcessChange(changes: any): boolean {
-    if (['filter', 'sort', 'page', 'remove', 'refresh', 'load', 'paging'].indexOf(changes['action']) !== -1) {
-      return true;
-    } else if (['prepend', 'append'].indexOf(changes['action']) !== -1 && !this.getSetting('pager.display')) {
+    if (
+      [
+        'filter',
+        'sort',
+        'page',
+        'remove',
+        'refresh',
+        'load',
+        'paging',
+        'add',
+        'update',
+        'prepend',
+        'append',
+        'empty',
+      ].indexOf(changes['action']) !== -1
+    ) {
       return true;
     }
 

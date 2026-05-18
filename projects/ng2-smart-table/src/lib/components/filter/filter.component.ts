@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { FilterDefault } from './filter-default';
 import { Subscription } from 'rxjs';
 
@@ -24,9 +24,14 @@ import { Subscription } from 'rxjs';
       </div>
     `,
 })
-export class FilterComponent extends FilterDefault implements OnChanges {
-  query: string = '';
+export class FilterComponent extends FilterDefault implements OnChanges, OnDestroy {
   protected dataChangedSub: Subscription;
+
+  ngOnDestroy(): void {
+    if (this.dataChangedSub) {
+      this.dataChangedSub.unsubscribe();
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.source) {

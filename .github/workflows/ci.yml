@@ -1,0 +1,95 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npx ng lint
+
+  unit-lib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test:ci
+
+  build-lib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build:lib
+
+  build-demo:
+    needs: [build-lib]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build:demo
+
+  pack:
+    needs: [build-lib]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run pack:lib
+      - name: Exposer lib.tgz pour les consommateurs
+        run: |
+          f="$(ls -1 dist-pack/*.tgz | head -1)"
+          cp "$f" dist-pack/lib.tgz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: npm-package
+          path: dist-pack/
+
+  consumer-smoke:
+    needs: [pack]
+    runs-on: ubuntu-latest
+    # Matrice Node ; pour Angular 20/21+ dupliquer le dossier consumer avec d’autres peerDeps
+    # ou générer l’app via `ng new` dans un job dédié une fois la compat validée.
+    strategy:
+      matrix:
+        node-version: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: consumer-smoke/package-lock.json
+      - uses: actions/download-artifact@v4
+        with:
+          name: npm-package
+          path: dist-pack
+      - run: test -f dist-pack/lib.tgz
+      - run: cd consumer-smoke && npm ci
+      - run: cd consumer-smoke && npm run build

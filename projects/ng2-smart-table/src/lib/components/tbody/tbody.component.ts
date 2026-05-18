@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 import { Grid } from '../../lib/grid';
 import { DataSource } from '../../lib/data-source/data-source';
@@ -9,7 +9,7 @@ import { Cell } from '../../lib/data-set/cell';
   styleUrls: ['./tbody.component.scss'],
   templateUrl: './tbody.component.html',
 })
-export class Ng2SmartTableTbodyComponent {
+export class Ng2SmartTableTbodyComponent implements OnChanges {
 
   @Input() grid: Grid;
   @Input() source: DataSource;
@@ -43,7 +43,10 @@ export class Ng2SmartTableTbodyComponent {
     return this.grid.getColumns().length + actionColumns;
   }
 
-  ngOnChanges() {
+  ngOnChanges(_changes: SimpleChanges): void {
+    if (!this.grid) {
+      return;
+    }
     this.isMultiSelectVisible = this.grid.isMultiSelectVisible();
     this.showActionColumnLeft = this.grid.showActionColumn('left');
     this.mode = this.grid.getSetting('mode');

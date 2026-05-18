@@ -1,4 +1,21 @@
-## [1.7.2](https://github.com/yggg/ng2-smart-table/compare/v1.7.1...v1.7.2) (2020-11-12)
+## [2.0.0-beta.0] - 2026-05-18
+
+### Migration majeure
+
+- Support **Angular 18+** (peer `>=18 <22`), compilation Ivy **partial** (APF moderne).
+- Nouveau paquet npm **`@ng-smart-table/ng-smart-table`** (remplace `ng2-smart-table` sur npm pour ce fork).
+- Suppression de la dépendance **`ng2-completer`** : autocomplétion intégrée localement pour les colonnes `editor` / `filter` de type `completer` (même configuration `data`, `searchFields`, `titleField`, etc.).
+- Composants dynamiques : `ComponentFactoryResolver` remplacé par `ViewContainerRef.createComponent()`.
+- `ServerDataSource` : `firstValueFrom` à la place de `Observable.toPromise()`.
+
+### Qualité & release
+
+- Suite de tests unitaires (completer, grille, data sources, composants dynamiques).
+- CI GitHub Actions (lint, build, pack, consumer-smoke Node 20/22).
+- Script `consumer:smoke` et mini-app consommatrice Angular 18.
+- Paquet publiable avec `LICENSE.txt` et README embarqués.
+
+## [1.7.2]
 
 
 ### Bug Fixes

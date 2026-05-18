@@ -1,169 +1,69 @@
-[![Build Status](https://travis-ci.org/akveo/ng2-smart-table.svg?branch=master)](https://travis-ci.org/akveo/ng2-smart-table)
+# Angular Smart Table (`@ng-smart-table/ng-smart-table`)
 
-# Angular Smart Table Component
+Fork modernisé du composant **ng2-smart-table** (Akveo), compilé pour **Angular 18+** (Ivy partiel / Angular Package Format actuel).
 
-ng2-smart-table component made with :heart:  by [Akveo team](http://akveo.com/). Follow us on [Twitter](https://twitter.com/akveo_inc) to get latest news about this component first!
+## Prérequis
 
-## ⚠ Low Maintenance
-Due to project priority and resource constraints, this project is currently on low maintenance. We recognize that there are a lot of activities around this package. However, we are unable to accommodate the maintenance this project requires.
-
-### Demo
-
-<a target="_blank" href="https://akveo.github.io/ng2-smart-table/">Live Demo</a>
-
-![alt tag](projects/demo/src/assets/demo.gif)
+- Angular **18** ou supérieur (**>=18 <22** via `peerDependencies` du paquet ; la lib est compilée avec la toolchain Angular 18 du dépôt — valider toute cible majeure avec le job CI « consumer-smoke » ou `npm run consumer:smoke`).
+- **RxJS** 7.8+ (aligné sur les `peerDependencies` du paquet).
 
 ## Installation
 
-The library is available as npm package, so all you need to do is to run the following command:
-
-```
-npm install --save ng2-smart-table
+```bash
+npm install @ng-smart-table/ng-smart-table
 ```
 
-This command will create a record in your `package.json` file and install the package into the npm modules folder.
+Dans votre module (ou imports standalone) :
 
-## Minimal Setup Example
-
-First thing you need to do is to import the ng2-smart-table directives into your component.
-
-```
-
-import { Ng2SmartTableModule } from 'ng2-smart-table';
-
-```
-
-Then register it by adding to the list of directives of your module:
-
-```
-// ...
+```typescript
+import { Ng2SmartTableModule } from '@ng-smart-table/ng-smart-table';
 
 @NgModule({
-  imports: [
-    // ...
-    
-    Ng2SmartTableModule,
-    
-    // ...
-  ],
-  declarations: [ ... ]
+  imports: [Ng2SmartTableModule, /* … */],
 })
-// ...
+export class AppModule {}
 ```
 
-Now, we need to configure the table and add it into the template. The only <strong>required</strong> setting for the component to start working is a columns configuration.
-Let's register <i>settings</i> property inside of the component where we want to have the table and configure some columns [Settings documentation](https://akveo.github.io/ng2-smart-table/#/documentation):
-    
-```
-settings = {
-  columns: {
-    id: {
-      title: 'ID'
-    },
-    name: {
-      title: 'Full Name'
-    },
-    username: {
-      title: 'User Name'
-    },
-    email: {
-      title: 'Email'
-    }
-  }
-};
-```
+Le sélecteur et les symboles historiques sont conservés : `Ng2SmartTableModule`, `Ng2SmartTableComponent`, `LocalDataSource`, `ServerDataSource`, etc.
 
-Finally let's put the ng2-smart-table component inside of the template:
+### `ServerDataSource` et HTTP
 
-```
-// ...
+Fournissez `HttpClient` dans l’application (`HttpClientModule` ou `provideHttpClient()` selon votre version).
 
-@Component({
-  template: `
-    <ng2-smart-table [settings]="settings"></ng2-smart-table>
-  `
-})
-// ...
-```
-At this step you will have a minimal configured table. All functions are available by default and you don't need to configure them anyhow, so now you can add/edit/delete rows, sort or filter the table, etc.
- 
-Still it seems like something is missing... Right, there is no data in the table by default. To add some, let's create an array property with a list of objects in the component. Please note that object keys are the same as in the columns configuration.
+## Depuis `ng2-smart-table` (npm historique)
 
-```
-data = [
-  {
-    id: 1,
-    name: "Leanne Graham",
-    username: "Bret",
-    email: "Sincere@april.biz"
-  },
-  {
-    id: 2,
-    name: "Ervin Howell",
-    username: "Antonette",
-    email: "Shanna@melissa.tv"
-  },
-  
-  // ... list of items
-  
-  {
-    id: 11,
-    name: "Nicholas DuBuque",
-    username: "Nicholas.Stanton",
-    email: "Rey.Padberg@rosamond.biz"
-  }
-];
+1. Remplacer la dépendance : `npm uninstall ng2-smart-table && npm install @ng-smart-table/ng-smart-table`
+2. Mettre à jour les imports : `from 'ng2-smart-table'` → `from '@ng-smart-table/ng-smart-table'`
+3. Si vous utilisiez **`ng2-completer`** en direct : il n’est plus requis pour la table ; l’autocomplete « completer » des colonnes est géré en interne.
+4. Vérifier les composants **custom** créés dynamiquement : ils doivent être déclarés dans un `NgModule` (ou être standalone et importés) — plus d’`entryComponents` sous Angular récent.
+
+## Développement du dépôt
+
+```bash
+npm install
+npm start                 # démo
+npm run build:lib         # paquet dans dist/ng2-smart-table
+npm run build:ci          # lib + démo + tests
+npm run pack:lib          # build + tarball dans dist-pack/ (pour CI / inspection)
+npm run consumer:smoke    # pack + mini-app qui installe le .tgz et build prod
+npm run publish:dist      # publication (après npm login)
 ```
 
-And pass the data to the table:
+**Publication** : le scope npm `@ng-smart-table` doit exister et vous y avoir les droits ; sinon modifiez le champ `name` dans [projects/ng2-smart-table/package.json](projects/ng2-smart-table/package.json) avant `npm publish`.
 
-```
-// ...
+### Avant publication npm
 
-@Component({
-  template: `
-    <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
-  `
-})
-// ...
-```
+1. `npm ci`
+2. `npm run lint`
+3. `npm run build:ci`
+4. `npm run pack:lib` — inspecter `dist-pack/*.tgz` (`LICENSE.txt`, `README.md`, pas de `.angular` / `coverage` / sources de démo)
+5. `npm run consumer:smoke`
+6. `npm audit --omit=dev` — traiter ou documenter les alertes (souvent chaîne transitive côté démo/outillage)
 
-Now you have some data in the table.
- 
-## Further Documentation
-Installation, customization and other useful articles: https://akveo.github.io/ng2-smart-table/
+Publier d’abord une prérelease (`2.0.0-beta.x` / dist-tag `next`), puis promouvoir en stable après validation dans une app réelle.
 
-## UI Bakery
-Try low-code internal tool builder for free
-<a href="https://uibakery.io/?utm_source=github&utm_medium=clicks&utm_campaign=banner"><img src="https://user-images.githubusercontent.com/6151971/125071660-41f84900-e0c2-11eb-882a-0c675eb1e5e3.png"></a>
+Voir [DEV_DOCS.md](DEV_DOCS.md) pour le détail des releases.
 
-## How can I support developers?
-- Star our GitHub repo :star:
-- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:
-- Follow us on [Twitter](https://twitter.com/akveo_inc) :feet:
-- Like our page on [Facebook](https://www.facebook.com/akveo/) :thumbsup:
+## Licence
 
-## Can I hire you guys?
-Yes!  Visit [our homepage](http://akveo.com/) or simply leave us a note to [contact@akveo.com](mailto:contact@akveo.com). We will be happy to work with you!
-
-## Features
-* Local data source (Server/API DataSource is on its way)
-* Filtering
-* Sorting
-* Pagination
-* Inline Add/Edit/Delete
-* Flexible event model
-
-## License
-[MIT](LICENSE.txt) license.
-
-## Special thanks to our awesome contributors!
-
-[<img alt="nnixaa" src="https://avatars0.githubusercontent.com/u/230527?v=3&s=60" width="60">](https://github.com/nnixaa)[<img alt="lexzhukov" src="https://avatars0.githubusercontent.com/u/12192373?v=3&s=60" width="60">](https://github.com/lexzhukov)[<img alt="damnko" src="https://avatars2.githubusercontent.com/u/680205?v=3&s=60" width="60">](https://github.com/damnko)[<img alt="Tibing" src="https://avatars2.githubusercontent.com/u/17410089?v=3&s=60" width="60">](https://github.com/Tibing)[<img alt="Ezeon" src="https://avatars0.githubusercontent.com/u/21973741?v=3&s=60" width="60">](https://github.com/Ezeon)[<img alt="Deilan" src="https://avatars1.githubusercontent.com/u/4777512?v=3&s=60" width="60">](https://github.com/Deilan)[<img alt="hoswey" src="https://avatars0.githubusercontent.com/u/3689445?v=3&s=60" width="60">](https://github.com/hoswey)[<img alt="stacyakveo" src="https://avatars2.githubusercontent.com/u/27723447?v=3&s=60" width="60">](https://github.com/stacyakveo)[<img alt="Akshaymisal5" src="https://avatars3.githubusercontent.com/u/15906551?v=3&s=60" width="60">](https://github.com/Akshaymisal5)[<img alt="geneeblack" src="https://avatars0.githubusercontent.com/u/282525?v=3&s=60" width="60">](https://github.com/geneeblack)[<img alt="vvandoorne" src="https://avatars2.githubusercontent.com/u/26658175?v=3&s=60" width="60">](https://github.com/vvandoorne)[<img alt="ananthhh" src="https://avatars1.githubusercontent.com/u/3583234?v=3&s=60" width="60">](https://github.com/ananthhh)[<img alt="bis-sb" src="https://avatars1.githubusercontent.com/u/22668001?v=3&s=60" width="60">](https://github.com/bis-sb)[<img alt="tadashi-aikawa" src="https://avatars1.githubusercontent.com/u/9500018?v=3&s=60" width="60">](https://github.com/tadashi-aikawa)
-
-[<img alt="nureha" src="https://avatars2.githubusercontent.com/u/7064537?v=3&s=60" width="60">](https://github.com/nureha)[<img alt="vlupu10" src="https://avatars1.githubusercontent.com/u/3597512?v=3&s=60" width="60">](https://github.com/vlupu10)[<img alt="zhouhao27" src="https://avatars1.githubusercontent.com/u/8099731?v=3&s=60" width="60">](https://github.com/zhouhao27)[<img alt="hkb1990" src="https://avatars1.githubusercontent.com/u/2637138?v=3&s=60" width="60">](https://github.com/hkb1990)[<img alt="liaosong" src="https://avatars0.githubusercontent.com/u/3927282?v=3&s=60" width="60">](https://github.com/liaosong)[<img alt="ktriek" src="https://avatars2.githubusercontent.com/u/4461059?v=3&s=60" width="60">](https://github.com/ktriek)
-
-### From akveo
-
-Enjoy :metal:
-We're always happy to hear your feedback!
+MIT (voir [LICENSE.txt](LICENSE.txt)).

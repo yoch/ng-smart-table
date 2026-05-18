@@ -5,7 +5,7 @@ import { Directive, Input, Output, EventEmitter, HostListener, OnInit } from '@a
 })
 export class ScrollPositionDirective implements OnInit {
 
-  @Input() maxHeight: number;
+  @Input() maxHeight = 0;
 
   @Output() scrollChange = new EventEmitter<any>();
 

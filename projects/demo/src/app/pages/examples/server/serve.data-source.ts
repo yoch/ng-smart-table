@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LocalDataSource } from 'ng2-smart-table';
+import { firstValueFrom } from 'rxjs';
+import { LocalDataSource } from '@ng-smart-table/ng-smart-table';
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -37,12 +38,14 @@ export class CustomServerDataSource extends LocalDataSource {
       });
     }
 
-    return this.http.get(url, { observe: 'response' })
-      .pipe(
-        map(res => {
-          this.lastRequestCount = +res.headers.get('x-total-count');
-          return res.body;
-        })
-      ).toPromise();
+    return firstValueFrom(
+      this.http.get(url, { observe: 'response' })
+        .pipe(
+          map(res => {
+            this.lastRequestCount = +res.headers.get('x-total-count');
+            return res.body;
+          })
+        ),
+    );
   }
 }

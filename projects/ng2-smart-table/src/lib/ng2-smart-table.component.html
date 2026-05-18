@@ -1,6 +1,6 @@
 <table [id]="tableId" [ngClass]="tableClass">
 
-  <thead ng2-st-thead *ngIf="!isHideHeader || !isHideSubHeader"
+  <thead ng2-st-thead *ngIf="grid && (!isHideHeader || !isHideSubHeader)"
                       [grid]="grid"
                       [isAllSelected]="isAllSelected"
                       [source]="source"
@@ -11,7 +11,7 @@
                       (filter)="filter($event)">
   </thead>
 
-  <tbody ng2-st-tbody [grid]="grid"
+  <tbody ng2-st-tbody *ngIf="grid" [grid]="grid"
                       [source]="source"
                       [deleteConfirm]="deleteConfirm"
                       [editConfirm]="editConfirm"

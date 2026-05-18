@@ -1,17 +1,22 @@
-- [Release](#release)
-
 # Release
 
-0. For major version, search for `@breaking-change` to make sure all breaking changes are covered.
+0. Pour une version majeure, chercher `@breaking-change` pour couvrir les changements cassants.
 
-To start a new release (publish the framework packages on NPM) you need:
+# Publication npm (`@ng-smart-table/ng-smart-table`)
 
-1. create a new release branch called `release/{version}` where {version} is in `v1.6.0` format
-2. `npm run build:lib` to make sure the lib is building
-3. MANUALLY update a version in main ./package.json & in ./packages/ng2-smart-table/package.json
-4. `npm run changelog` to update changelog. Make sure the previous version has a git tag and it is pushed into the origin
-5. commit with `release: {version}` message
-6. push, create PR, approve & merge
-7. pull changes and release with `npm run publish`
-8. update docs with `npm run docs:gh-pages`
-9. create git tag `{version}` and push it with `git push --tags`
+1. Créer une branche `release/vX.Y.Z` si besoin.
+2. `npm run build:lib` pour valider la compilation de la lib.
+3. Mettre à jour la version dans [projects/ng2-smart-table/package.json](projects/ng2-smart-table/package.json) (le paquet publié). Le `package.json` racine est privé et sert au workspace.
+4. `npm run changelog` (nécessite un tag git pour la version précédente).
+5. Commit du style `release: vX.Y.Z`.
+6. Première publication beta : `npm run publish:beta` (tag npm `next`, version `2.0.0-beta.0`).
+7. Publication stable : `npm run publish:dist` (nécessite `npm login` et droits sur le scope `@ng-smart-table`).
+8. Optionnel : `npm run docs:gh-pages` pour la démo GitHub Pages.
+9. Tag git `vX.Y.Z` puis `git push --tags`.
+
+## Vérifications locales
+
+- `npm run build:ci` — build lib + démo + tests unitaires de la lib.
+- `npm run pack:lib` — génère le tarball dans `dist-pack/` (copier `lib.tgz` pour `consumer-smoke`).
+- `npm run consumer:smoke` — installe le paquet packagé dans la mini-app `consumer-smoke` et vérifie un build production.
+- `npm audit --omit=dev` — actuellement non vert sur le workspace Angular 18 : npm signale des vulnérabilités `@angular/* <=18.2.14` et propose une montée majeure vers Angular 21. Ne pas appliquer `npm audit fix --force` dans une release de durcissement ; le paquet publié garde Angular en `peerDependencies` et ne bundle pas Angular. Revoir ce point avec une validation consommateur Angular 20/21 avant d'élargir ou changer la toolchain.

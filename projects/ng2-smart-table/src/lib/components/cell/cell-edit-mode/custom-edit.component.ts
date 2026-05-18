@@ -1,6 +1,6 @@
 import {
   Component,
-  ComponentFactoryResolver,
+  Type,
   ViewChild,
   ViewContainerRef,
   SimpleChanges,
@@ -21,14 +21,10 @@ export class CustomEditComponent extends EditCellDefault implements OnChanges, O
   customComponent: any;
   @ViewChild('dynamicTarget', { read: ViewContainerRef, static: true }) dynamicTarget: any;
 
-  constructor(private resolver: ComponentFactoryResolver) {
-    super();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(_changes: SimpleChanges) {
     if (this.cell && !this.customComponent) {
-      const componentFactory = this.resolver.resolveComponentFactory(this.cell.getColumn().editor.component);
-      this.customComponent = this.dynamicTarget.createComponent(componentFactory);
+      const compType = this.cell.getColumn().editor.component as Type<any>;
+      this.customComponent = this.dynamicTarget.createComponent(compType);
 
       // set @Inputs and @Outputs of custom component
       this.customComponent.instance.cell = this.cell;

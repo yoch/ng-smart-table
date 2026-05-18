@@ -11,10 +11,9 @@ export class FilterDefault {
   @Input() column: Column;
   @Input() source: DataSource;
   @Input() inputClass: string = '';
+  @Input() query: string = '';
 
   @Output() filter = new EventEmitter<any>();
-
-  query: string = '';
 
   onFilter(query: string) {
     this.source.addFilter({
