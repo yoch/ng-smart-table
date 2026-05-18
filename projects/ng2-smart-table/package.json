@@ -1,6 +1,6 @@
 {
   "name": "@yoch/ng-smart-table",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "description": "Angular Smart Table (fork moderne de ng2-smart-table)",
   "keywords": [
     "angular",

@@ -1,3 +1,9 @@
+## [2.0.0-beta.1] - 2026-05-18
+
+### Chore
+
+- ESLint cleanup, npm audit/pack workflow, build warning fixes, and `lodash-es` migration for ESM-friendly consumer builds.
+
 ## [2.0.0-beta.0] - 2026-05-18
 
 ### Migration majeure
