@@ -22,7 +22,7 @@
             "assets": [],
             "styles": ["src/styles.css"],
             "scripts": [],
-            "allowedCommonJsDependencies": ["lodash"]
+            "allowedCommonJsDependencies": ["lodash-es"]
           },
           "configurations": {
             "production": {

@@ -21,4 +21,4 @@
 - `npm run consumer:smoke` — installe le paquet packagé dans la mini-app `consumer-smoke` et vérifie un build production.
 - Le dossier `consumer-smoke` n’a pas de `package-lock.json` versionné : la dépendance `file:../dist-pack/lib.tgz` change d’empreinte à chaque `npm pack` ; en CI on utilise `npm install`, pas `npm ci`.
 - `npm audit --omit=dev` — vert sur le workspace (Angular et outillage sont en `devDependencies` uniquement).
-- `npm run audit:pack` — audit des dépendances réellement publiées (`lodash`, `tslib`) via installation du tarball packagé.
+- `npm run audit:pack` — audit des dépendances réellement publiées (`lodash-es`, `tslib`) via installation du tarball packagé.

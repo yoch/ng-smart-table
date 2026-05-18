@@ -15,8 +15,8 @@ fi
 cp "${TGZ[0]}" dist-pack/lib.tgz
 
 cd consumer-smoke
-rm -rf node_modules
-# Ne pas utiliser npm ci : package-lock.json figerait l'intégrité sha512 de lib.tgz,
-# qui change à chaque npm pack en CI.
+rm -rf node_modules package-lock.json
+# Ne pas utiliser npm ci : le lockfile figerait l'intégrité sha512 de lib.tgz
+# et le contenu du paquet packagé, qui changent à chaque build.
 npm install --no-audit --no-fund
 npm run build
