@@ -146,5 +146,5 @@ export const CUSTOM_EDIT_VIEW_CODE_SAMPLES = {
     CustomRenderComponent,
   ],
 })
-// Angular 18+ : déclarez les composants dans declarations (plus besoin d'entryComponents).`,
+// Angular 18+: declare components in declarations (no entryComponents needed).`,
 };

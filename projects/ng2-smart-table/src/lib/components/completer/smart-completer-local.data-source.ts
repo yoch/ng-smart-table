@@ -1,8 +1,8 @@
 import { Observable, of } from 'rxjs';
 
 /**
- * Remplace la source locale de `ng2-completer` pour les colonnes editor/filter type `completer`.
- * Accepte `searchFields` comme tableau, une chaîne unique, ou une liste séparée par virgules (comportement historique).
+ * Replaces the local `ng2-completer` data source for `completer` editor/filter columns.
+ * Accepts `searchFields` as an array, a single string, or a comma-separated list (legacy behavior).
  */
 export class SmartCompleterLocalDataSource {
   private descriptionFieldName?: string;
@@ -16,7 +16,7 @@ export class SmartCompleterLocalDataSource {
     this.fieldPaths = SmartCompleterLocalDataSource.normalizeSearchFields(searchFields);
   }
 
-  /** Extrait les chemins de champs pour recherche (trim, ignore vides). */
+  /** Extracts field paths for search (trim, ignore empty). */
   static normalizeSearchFields(searchFields: string | string[] | null | undefined): string[] {
     if (searchFields == null) {
       return [];

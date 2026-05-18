@@ -6,20 +6,20 @@
 
 ## [2.0.0-beta.0] - 2026-05-18
 
-### Migration majeure
+### Major migration
 
-- Support **Angular 18+** (peer `>=18 <22`), compilation Ivy **partial** (APF moderne).
-- Nouveau paquet npm **`@yoch/ng-smart-table`** (remplace `ng2-smart-table` sur npm pour ce fork).
-- Suppression de la dépendance **`ng2-completer`** : autocomplétion intégrée localement pour les colonnes `editor` / `filter` de type `completer` (même configuration `data`, `searchFields`, `titleField`, etc.).
-- Composants dynamiques : `ComponentFactoryResolver` remplacé par `ViewContainerRef.createComponent()`.
-- `ServerDataSource` : `firstValueFrom` à la place de `Observable.toPromise()`.
+- **Angular 18+** support (peer `>=18 <22`), **partial** Ivy compilation (modern APF).
+- New npm package **`@yoch/ng-smart-table`** (replaces `ng2-smart-table` on npm for this fork).
+- Removed **`ng2-completer`** dependency: built-in local autocomplete for `completer` column `editor` / `filter` (same `data`, `searchFields`, `titleField`, etc.).
+- Dynamic components: `ComponentFactoryResolver` replaced with `ViewContainerRef.createComponent()`.
+- `ServerDataSource`: `firstValueFrom` instead of `Observable.toPromise()`.
 
-### Qualité & release
+### Quality & release
 
-- Suite de tests unitaires (completer, grille, data sources, composants dynamiques).
-- CI GitHub Actions (lint, build, pack, consumer-smoke Node 20/22).
-- Script `consumer:smoke` et mini-app consommatrice Angular 18.
-- Paquet publiable avec `LICENSE.txt` et README embarqués.
+- Unit test suite (completer, grid, data sources, dynamic components).
+- GitHub Actions CI (lint, build, pack, consumer-smoke on Node 20/22).
+- `consumer:smoke` script and Angular 18 consumer mini-app.
+- Publishable package with bundled `LICENSE.txt` and README.
 
 ## [1.7.2]
 

@@ -1,5 +1,5 @@
 /**
- * Extraits de documentation (anciennement chargés via raw-loader).
+ * Documentation snippets (formerly loaded via raw-loader).
  */
 export const DEMO_CODE_SAMPLES = {
   install: 'npm install @yoch/ng-smart-table',

@@ -1,4 +1,4 @@
-# Conservé pour compatibilité ; la CI principale est sous .github/workflows/ci.yml
+# Kept for compatibility; primary CI lives in .github/workflows/ci.yml
 sudo: false
 language: node_js
 node_js:

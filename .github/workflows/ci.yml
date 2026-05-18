@@ -62,7 +62,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run pack:lib
-      - name: Exposer lib.tgz pour les consommateurs
+      - name: Expose lib.tgz for consumers
         run: |
           f="$(ls -1 dist-pack/*.tgz | head -1)"
           cp "$f" dist-pack/lib.tgz
@@ -74,8 +74,8 @@ jobs:
   consumer-smoke:
     needs: [pack]
     runs-on: ubuntu-latest
-    # Matrice Node ; pour Angular 20/21+ dupliquer le dossier consumer avec d’autres peerDeps
-    # ou générer l’app via `ng new` dans un job dédié une fois la compat validée.
+    # Node matrix; for Angular 20/21+ duplicate the consumer folder with other peerDeps
+    # or generate the app via `ng new` in a dedicated job once compatibility is validated.
     strategy:
       matrix:
         node-version: ['20', '22']
@@ -88,7 +88,7 @@ jobs:
         with:
           name: npm-package
           path: dist-pack
-      - name: Installer le tarball CI (sans lockfile figé sur lib.tgz)
+      - name: Install CI tarball (no lockfile pinned to lib.tgz)
         run: |
           test -f dist-pack/lib.tgz
           cd consumer-smoke

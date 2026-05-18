@@ -9,5 +9,5 @@
   ],
 })
 
-// Angular 14+ : les composants dynamiques peuvent être « standalone » et importés
-// dans le module au lieu d’être uniquement déclarés — ne plus utiliser entryComponents.
+// Angular 14+: dynamic components can be standalone and imported
+// into the module instead of only being declared — do not use entryComponents.

@@ -1,24 +1,24 @@
 # Release
 
-0. Pour une version majeure, chercher `@breaking-change` pour couvrir les changements cassants.
+0. For a major version, search for `@breaking-change` to document breaking changes.
 
-# Publication npm (`@yoch/ng-smart-table`)
+# npm publishing (`@yoch/ng-smart-table`)
 
-1. Créer une branche `release/vX.Y.Z` si besoin.
-2. `npm run build:lib` pour valider la compilation de la lib.
-3. Mettre à jour la version dans [projects/ng2-smart-table/package.json](projects/ng2-smart-table/package.json) (le paquet publié). Le `package.json` racine est privé et sert au workspace.
-4. `npm run changelog` (nécessite un tag git pour la version précédente).
-5. Commit du style `release: vX.Y.Z`.
-6. Première publication beta : `npm run publish:beta` (tag npm `next`, version `2.0.0-beta.0`).
-7. Publication stable : `npm run publish:dist` (nécessite `npm login` et compte npm `@yoch` connecté).
-8. Optionnel : `npm run docs:gh-pages` pour la démo GitHub Pages.
-9. Tag git `vX.Y.Z` puis `git push --tags`.
+1. Create a `release/vX.Y.Z` branch if needed.
+2. Run `npm run build:lib` to validate the library build.
+3. Bump the version in [projects/ng2-smart-table/package.json](projects/ng2-smart-table/package.json) (the published package). The root `package.json` is private and only serves the workspace.
+4. Run `npm run changelog` (requires a git tag for the previous version).
+5. Commit with message style `release: vX.Y.Z`.
+6. First beta publish: `npm run publish:beta` (npm tag `next`, e.g. version `2.0.0-beta.1`).
+7. Stable publish: `npm run publish:dist` (requires `npm login` and an authenticated `@yoch` npm account).
+8. Optional: `npm run docs:gh-pages` for the GitHub Pages demo.
+9. Git tag `vX.Y.Z`, then `git push --tags`.
 
-## Vérifications locales
+## Local checks
 
-- `npm run build:ci` — build lib + démo + tests unitaires de la lib.
-- `npm run pack:lib` — génère le tarball dans `dist-pack/` (copier `lib.tgz` pour `consumer-smoke`).
-- `npm run consumer:smoke` — installe le paquet packagé dans la mini-app `consumer-smoke` et vérifie un build production.
-- Le dossier `consumer-smoke` n’a pas de `package-lock.json` versionné : la dépendance `file:../dist-pack/lib.tgz` change d’empreinte à chaque `npm pack` ; en CI on utilise `npm install`, pas `npm ci`.
-- `npm audit --omit=dev` — vert sur le workspace (Angular et outillage sont en `devDependencies` uniquement).
-- `npm run audit:pack` — audit des dépendances réellement publiées (`lodash-es`, `tslib`) via installation du tarball packagé.
+- `npm run build:ci` — lib + demo build and library unit tests.
+- `npm run pack:lib` — tarball in `dist-pack/` (copy as `lib.tgz` for `consumer-smoke`).
+- `npm run consumer:smoke` — installs the packaged tarball in the `consumer-smoke` mini-app and verifies a production build.
+- `consumer-smoke` has no versioned `package-lock.json`: the `file:../dist-pack/lib.tgz` dependency changes integrity on every `npm pack`; CI uses `npm install`, not `npm ci`.
+- `npm audit --omit=dev` — clean on the workspace (Angular and tooling are devDependencies only).
+- `npm run audit:pack` — audits published runtime deps (`lodash-es`, `tslib`) by installing the packaged tarball.

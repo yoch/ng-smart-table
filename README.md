@@ -1,11 +1,11 @@
 # Angular Smart Table (`@yoch/ng-smart-table`)
 
-Fork modernisé du composant **ng2-smart-table** (Akveo), compilé pour **Angular 18+** (Ivy partiel / Angular Package Format actuel).
+Modernized fork of **ng2-smart-table** (Akveo), built for **Angular 18+** (partial Ivy / current Angular Package Format).
 
-## Prérequis
+## Prerequisites
 
-- Angular **18** ou supérieur (**>=18 <22** via `peerDependencies` du paquet ; la lib est compilée avec la toolchain Angular 18 du dépôt — valider toute cible majeure avec le job CI « consumer-smoke » ou `npm run consumer:smoke`).
-- **RxJS** 7.8+ (aligné sur les `peerDependencies` du paquet).
+- Angular **18** or newer (**>=18 <22** via package `peerDependencies`; the library is compiled with this repo's Angular 18 toolchain — validate other major versions with the CI `consumer-smoke` job or `npm run consumer:smoke`).
+- **RxJS** 7.8+ (aligned with package `peerDependencies`).
 
 ## Installation
 
@@ -13,7 +13,7 @@ Fork modernisé du composant **ng2-smart-table** (Akveo), compilé pour **Angula
 npm install @yoch/ng-smart-table
 ```
 
-Dans votre module (ou imports standalone) :
+In your module (or standalone imports):
 
 ```typescript
 import { Ng2SmartTableModule } from '@yoch/ng-smart-table';
@@ -24,46 +24,46 @@ import { Ng2SmartTableModule } from '@yoch/ng-smart-table';
 export class AppModule {}
 ```
 
-Le sélecteur et les symboles historiques sont conservés : `Ng2SmartTableModule`, `Ng2SmartTableComponent`, `LocalDataSource`, `ServerDataSource`, etc.
+Historical selectors and symbols are unchanged: `Ng2SmartTableModule`, `Ng2SmartTableComponent`, `LocalDataSource`, `ServerDataSource`, etc.
 
-### `ServerDataSource` et HTTP
+### `ServerDataSource` and HTTP
 
-Fournissez `HttpClient` dans l’application (`HttpClientModule` ou `provideHttpClient()` selon votre version).
+Provide `HttpClient` in your application (`HttpClientModule` or `provideHttpClient()` depending on your Angular version).
 
-## Depuis `ng2-smart-table` (npm historique)
+## Migrating from `ng2-smart-table` (legacy npm)
 
-1. Remplacer la dépendance : `npm uninstall ng2-smart-table && npm install @yoch/ng-smart-table`
-2. Mettre à jour les imports : `from 'ng2-smart-table'` → `from '@yoch/ng-smart-table'`
-3. Si vous utilisiez **`ng2-completer`** en direct : il n’est plus requis pour la table ; l’autocomplete « completer » des colonnes est géré en interne.
-4. Vérifier les composants **custom** créés dynamiquement : ils doivent être déclarés dans un `NgModule` (ou être standalone et importés) — plus d’`entryComponents` sous Angular récent.
+1. Replace the dependency: `npm uninstall ng2-smart-table && npm install @yoch/ng-smart-table`
+2. Update imports: `from 'ng2-smart-table'` → `from '@yoch/ng-smart-table'`
+3. If you used **`ng2-completer`** directly: it is no longer required for the table; column `completer` autocomplete is handled internally.
+4. Review **custom** dynamically created components: declare them in an `NgModule` (or use standalone components and import them) — no `entryComponents` on recent Angular versions.
 
-## Développement du dépôt
+## Repository development
 
 ```bash
 npm install
-npm start                 # démo
-npm run build:lib         # paquet dans dist/ng2-smart-table
-npm run build:ci          # lib + démo + tests
-npm run pack:lib          # build + tarball dans dist-pack/ (pour CI / inspection)
-npm run consumer:smoke    # pack + mini-app qui installe le .tgz et build prod
-npm run publish:dist      # publication (après npm login)
+npm start                 # demo app
+npm run build:lib         # package output in dist/ng2-smart-table
+npm run build:ci          # lib + demo + tests
+npm run pack:lib          # build + tarball in dist-pack/ (CI / inspection)
+npm run consumer:smoke    # pack + mini-app installs .tgz and runs prod build
+npm run publish:dist      # publish (after npm login)
 ```
 
-**Publication** : le scope npm `@yoch` doit exister et vous y avoir les droits ; sinon modifiez le champ `name` dans [projects/ng2-smart-table/package.json](projects/ng2-smart-table/package.json) avant `npm publish`.
+**Publishing**: the npm scope `@yoch` must exist and your account must have publish rights; otherwise change the `name` field in [projects/ng2-smart-table/package.json](projects/ng2-smart-table/package.json) before `npm publish`.
 
-### Avant publication npm
+### Before publishing to npm
 
 1. `npm ci`
 2. `npm run lint`
 3. `npm run build:ci`
-4. `npm run pack:lib` — inspecter `dist-pack/*.tgz` (`LICENSE.txt`, `README.md`, pas de `.angular` / `coverage` / sources de démo)
+4. `npm run pack:lib` — inspect `dist-pack/*.tgz` (`LICENSE.txt`, `README.md`, no `.angular` / `coverage` / demo sources)
 5. `npm run consumer:smoke`
-6. `npm audit --omit=dev` et `npm run audit:pack` — vulnérabilités workspace (outillage) et paquet publié
+6. `npm audit --omit=dev` and `npm run audit:pack` — workspace tooling and published package vulnerabilities
 
-Publier d’abord une prérelease (`2.0.0-beta.x` / dist-tag `next`), puis promouvoir en stable après validation dans une app réelle.
+Publish a prerelease first (`2.0.0-beta.x` / dist-tag `next`), then promote to stable after validating in a real app.
 
-Voir [DEV_DOCS.md](DEV_DOCS.md) pour le détail des releases.
+See [DEV_DOCS.md](DEV_DOCS.md) for release details.
 
-## Licence
+## License
 
-MIT (voir [LICENSE.txt](LICENSE.txt)).
+MIT (see [LICENSE.txt](LICENSE.txt)).
