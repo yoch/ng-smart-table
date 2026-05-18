@@ -1,1 +1,1 @@
-import { Ng2SmartTableModule, LocalDataSource } from '@ng-smart-table/ng-smart-table';
+import { Ng2SmartTableModule, LocalDataSource } from '@yoch/ng-smart-table';

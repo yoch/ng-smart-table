@@ -19,7 +19,7 @@
     "lib": ["ES2022", "dom"],
     "baseUrl": "./",
     "paths": {
-      "@ng-smart-table/ng-smart-table": [
+      "@yoch/ng-smart-table": [
         "projects/ng2-smart-table/src/public-api.ts"
       ]
     }

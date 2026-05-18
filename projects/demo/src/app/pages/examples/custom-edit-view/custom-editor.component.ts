@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { DefaultEditor } from '@ng-smart-table/ng-smart-table';
+import { DefaultEditor } from '@yoch/ng-smart-table';
 
 @Component({
   template: `

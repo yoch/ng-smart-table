@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ViewCell } from '@ng-smart-table/ng-smart-table';
+import { ViewCell } from '@yoch/ng-smart-table';
 
 @Component({
   selector: 'button-view',

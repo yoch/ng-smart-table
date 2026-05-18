@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ServerDataSource } from '@ng-smart-table/ng-smart-table';
+import { ServerDataSource } from '@yoch/ng-smart-table';
 
 @Component({
   selector: 'advanced-example-server',

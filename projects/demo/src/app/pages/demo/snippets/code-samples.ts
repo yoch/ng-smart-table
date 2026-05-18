@@ -2,8 +2,8 @@
  * Extraits de documentation (anciennement chargés via raw-loader).
  */
 export const DEMO_CODE_SAMPLES = {
-  install: 'npm install @ng-smart-table/ng-smart-table',
-  require: "import { Ng2SmartTableModule } from '@ng-smart-table/ng-smart-table';",
+  install: 'npm install @yoch/ng-smart-table',
+  require: "import { Ng2SmartTableModule } from '@yoch/ng-smart-table';",
   directive: `// ...
 
 @NgModule({

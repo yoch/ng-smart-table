@@ -2,7 +2,7 @@ import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-import { DefaultFilter } from '@ng-smart-table/ng-smart-table';
+import { DefaultFilter } from '@yoch/ng-smart-table';
 
 @Component({
   template: `

@@ -36,6 +36,7 @@ pnpm-debug.log*
 dist-pack/
 consumer-smoke/node_modules/
 consumer-smoke/dist/
+consumer-smoke/package-lock.json
 
 # --- TypeScript / tooling ---
 *.tsbuildinfo

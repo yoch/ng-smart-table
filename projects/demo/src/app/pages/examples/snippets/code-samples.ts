@@ -1,5 +1,5 @@
 export const FILTER_EXAMPLES_CODE_SAMPLES = {
-  sourceRequire: "import { Ng2SmartTableModule, LocalDataSource } from '@ng-smart-table/ng-smart-table';",
+  sourceRequire: "import { Ng2SmartTableModule, LocalDataSource } from '@yoch/ng-smart-table';",
   createSource: `source: LocalDataSource; // add a property to the component
 
 constructor() {

@@ -1,4 +1,4 @@
-# Angular Smart Table (`@ng-smart-table/ng-smart-table`)
+# Angular Smart Table (`@yoch/ng-smart-table`)
 
 Fork modernisé du composant **ng2-smart-table** (Akveo), compilé pour **Angular 18+** (Ivy partiel / Angular Package Format actuel).
 
@@ -10,13 +10,13 @@ Fork modernisé du composant **ng2-smart-table** (Akveo), compilé pour **Angula
 ## Installation
 
 ```bash
-npm install @ng-smart-table/ng-smart-table
+npm install @yoch/ng-smart-table
 ```
 
 Dans votre module (ou imports standalone) :
 
 ```typescript
-import { Ng2SmartTableModule } from '@ng-smart-table/ng-smart-table';
+import { Ng2SmartTableModule } from '@yoch/ng-smart-table';
 
 @NgModule({
   imports: [Ng2SmartTableModule, /* … */],
@@ -32,8 +32,8 @@ Fournissez `HttpClient` dans l’application (`HttpClientModule` ou `provideHttp
 
 ## Depuis `ng2-smart-table` (npm historique)
 
-1. Remplacer la dépendance : `npm uninstall ng2-smart-table && npm install @ng-smart-table/ng-smart-table`
-2. Mettre à jour les imports : `from 'ng2-smart-table'` → `from '@ng-smart-table/ng-smart-table'`
+1. Remplacer la dépendance : `npm uninstall ng2-smart-table && npm install @yoch/ng-smart-table`
+2. Mettre à jour les imports : `from 'ng2-smart-table'` → `from '@yoch/ng-smart-table'`
 3. Si vous utilisiez **`ng2-completer`** en direct : il n’est plus requis pour la table ; l’autocomplete « completer » des colonnes est géré en interne.
 4. Vérifier les composants **custom** créés dynamiquement : ils doivent être déclarés dans un `NgModule` (ou être standalone et importés) — plus d’`entryComponents` sous Angular récent.
 
@@ -49,7 +49,7 @@ npm run consumer:smoke    # pack + mini-app qui installe le .tgz et build prod
 npm run publish:dist      # publication (après npm login)
 ```
 
-**Publication** : le scope npm `@ng-smart-table` doit exister et vous y avoir les droits ; sinon modifiez le champ `name` dans [projects/ng2-smart-table/package.json](projects/ng2-smart-table/package.json) avant `npm publish`.
+**Publication** : le scope npm `@yoch` doit exister et vous y avoir les droits ; sinon modifiez le champ `name` dans [projects/ng2-smart-table/package.json](projects/ng2-smart-table/package.json) avant `npm publish`.
 
 ### Avant publication npm
 

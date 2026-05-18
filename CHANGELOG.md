@@ -3,7 +3,7 @@
 ### Migration majeure
 
 - Support **Angular 18+** (peer `>=18 <22`), compilation Ivy **partial** (APF moderne).
-- Nouveau paquet npm **`@ng-smart-table/ng-smart-table`** (remplace `ng2-smart-table` sur npm pour ce fork).
+- Nouveau paquet npm **`@yoch/ng-smart-table`** (remplace `ng2-smart-table` sur npm pour ce fork).
 - Suppression de la dépendance **`ng2-completer`** : autocomplétion intégrée localement pour les colonnes `editor` / `filter` de type `completer` (même configuration `data`, `searchFields`, `titleField`, etc.).
 - Composants dynamiques : `ComponentFactoryResolver` remplacé par `ViewContainerRef.createComponent()`.
 - `ServerDataSource` : `firstValueFrom` à la place de `Observable.toPromise()`.

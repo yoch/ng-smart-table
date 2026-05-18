@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { ViewCell } from '@ng-smart-table/ng-smart-table';
+import { ViewCell } from '@yoch/ng-smart-table';
 
 @Component({
   template: `

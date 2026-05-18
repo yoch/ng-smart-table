@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { Ng2SmartTableModule } from '@ng-smart-table/ng-smart-table';
+import { Ng2SmartTableModule } from '@yoch/ng-smart-table';
 
 import { HeaderComponent } from './components/header/header.component';
 import { BasicExampleDataComponent } from './components/basic-example/basic-example-data.component';

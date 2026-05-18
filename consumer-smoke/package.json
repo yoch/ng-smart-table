@@ -13,7 +13,7 @@
     "@angular/forms": "^18.2.0",
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
-    "@ng-smart-table/ng-smart-table": "file:../dist-pack/lib.tgz",
+    "@yoch/ng-smart-table": "file:../dist-pack/lib.tgz",
     "lodash": "^4.17.21",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.3",

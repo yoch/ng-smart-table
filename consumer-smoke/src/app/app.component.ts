@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LocalDataSource } from '@ng-smart-table/ng-smart-table';
+import { LocalDataSource } from '@yoch/ng-smart-table';
 
 @Component({
   selector: 'app-root',

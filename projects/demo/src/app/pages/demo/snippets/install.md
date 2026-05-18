@@ -1,1 +1,1 @@
-npm install --save @ng-smart-table/ng-smart-table
+npm install --save @yoch/ng-smart-table

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { LocalDataSource } from '@ng-smart-table/ng-smart-table';
+import { LocalDataSource } from '@yoch/ng-smart-table';
 import { map } from 'rxjs/operators';
 
 @Injectable()

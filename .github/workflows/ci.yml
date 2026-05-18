@@ -84,12 +84,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: consumer-smoke/package-lock.json
       - uses: actions/download-artifact@v4
         with:
           name: npm-package
           path: dist-pack
-      - run: test -f dist-pack/lib.tgz
-      - run: cd consumer-smoke && npm ci
+      - name: Installer le tarball CI (sans lockfile figé sur lib.tgz)
+        run: |
+          test -f dist-pack/lib.tgz
+          cd consumer-smoke
+          rm -rf node_modules
+          npm install --no-audit --no-fund
       - run: cd consumer-smoke && npm run build

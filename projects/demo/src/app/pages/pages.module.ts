@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { Ng2SmartTableModule } from '@ng-smart-table/ng-smart-table';
+import { Ng2SmartTableModule } from '@yoch/ng-smart-table';
 
 import { routes } from './pages.routes';
 import { SharedModule } from '../shared/shared.module';
