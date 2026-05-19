@@ -75,6 +75,17 @@ describe('LocalDataSource', () => {
     expect(els[0].id).toBe(10);
   });
 
+  it('update and remove match by rowIdentityKey when references differ', async () => {
+    const ds = new LocalDataSource([{ id: 1, name: 'a' }], 'id');
+    const stale = { id: 1, name: 'a' };
+    await ds.update(stale, { id: 1, name: 'b' });
+    const all = await ds.getAll();
+    expect(all[0].name).toBe('b');
+
+    await ds.remove({ id: 1, name: 'b' });
+    expect((await ds.getAll()).length).toBe(0);
+  });
+
   it('add, append, prepend, update, remove, empty', async () => {
     const ds = new LocalDataSource([{ id: 1 }]);
     await ds.add({ id: 2 });

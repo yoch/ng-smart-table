@@ -1,4 +1,14 @@
 export * from './lib/ng2-smart-table.module';
+export type {
+  Ng2SmartTableSettings,
+  Ng2SmartTableColumnSettings,
+  Ng2SmartTableActionsSettings,
+  Ng2SmartTableCustomAction,
+  Ng2SmartTableRowEvent,
+  Ng2SmartTableUserRowSelectEvent,
+  Ng2SmartTableSelectMode,
+  Ng2SmartTableEditMode,
+} from './lib/ng2-smart-table.types';
 export type { ViewCell } from './lib/components/cell/cell-view-mode/view-cell';
 export { DefaultEditor, type Editor } from './lib/components/cell/cell-editors/default-editor';
 export { DefaultFilter, type Filter } from './lib/components/filter/filter-types/default-filter';

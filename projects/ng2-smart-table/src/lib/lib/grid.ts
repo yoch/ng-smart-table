@@ -7,6 +7,7 @@ import { Column } from './data-set/column';
 import { Row } from './data-set/row';
 import { DataSet } from './data-set/data-set';
 import { DataSource } from './data-source/data-source';
+import { LocalDataSource } from './data-source/local/local.data-source';
 
 export class Grid {
 
@@ -58,9 +59,10 @@ export class Grid {
 
   setSettings(settings: Object) {
     this.settings = settings;
-    this.dataSet = new DataSet([], this.getSetting('columns'));
+    this.dataSet = new DataSet([], this.getSetting('columns'), this.getSetting('rowIdentityKey'));
 
     if (this.source) {
+      this.applyRowIdentityKey(this.source);
       this.source.refresh();
     }
   }
@@ -71,13 +73,16 @@ export class Grid {
 
   setSource(source: DataSource) {
     this.source = this.prepareSource(source);
+    this.applyRowIdentityKey(this.source);
     this.detach();
 
     this.sourceOnChangedSubscription = this.source.onChanged().subscribe((changes: any) => this.processDataChange(changes));
 
     this.sourceOnUpdatedSubscription = this.source.onUpdated().subscribe((data: any) => {
       const changedRow = this.dataSet.findRowByData(data);
-      changedRow.setData(data);
+      if (changedRow) {
+        changedRow.setData(data);
+      }
     });
   }
 
@@ -266,6 +271,14 @@ export class Grid {
       this.dataSet.willSelectFirstRow();
     }
     return null;
+  }
+
+  private applyRowIdentityKey(source: DataSource): void {
+    const key = this.getSetting('rowIdentityKey');
+    const local = source as LocalDataSource;
+    if (typeof local.setRowIdentityKey === 'function') {
+      local.setRowIdentityKey(key != null && key !== '' ? String(key) : undefined);
+    }
   }
 
   prepareSource(source: any): DataSource {

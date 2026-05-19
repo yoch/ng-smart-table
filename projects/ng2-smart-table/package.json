@@ -1,6 +1,6 @@
 {
   "name": "@yoch/ng-smart-table",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0",
   "description": "Angular Smart Table (modern fork of ng2-smart-table)",
   "keywords": [
     "angular",
@@ -10,7 +10,7 @@
     "ng2-smart-table",
     "data-table"
   ],
-  "author": "akveo",
+  "author": "yoch",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

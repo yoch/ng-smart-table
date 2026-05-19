@@ -76,7 +76,7 @@ describe('ServerDataSource', () => {
     await expectAsync(p).toBeRejected();
   });
 
-  it('multi-column sort: last configured sort wins in query params (HttpParams single key)', async () => {
+  it('multi-column sort: sends repeated sort query params', async () => {
     const ds = new ServerDataSource(http, {
       endPoint: '/api/sort',
       sortFieldKey: '_sort',
@@ -91,8 +91,8 @@ describe('ServerDataSource', () => {
     );
     const p = ds.getElements();
     const req = httpMock.expectOne((r) => r.url.startsWith('/api/sort'));
-    expect(req.request.params.get('_sort')).toBe('b');
-    expect(req.request.params.get('_order')).toBe('DESC');
+    expect(req.request.params.getAll('_sort')).toEqual(['a', 'b']);
+    expect(req.request.params.getAll('_order')).toEqual(['ASC', 'DESC']);
     req.flush([], { headers: { 'x-total-count': '0' } });
     await p;
   });
