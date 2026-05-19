@@ -1,3 +1,15 @@
+## [2.0.0] - 2026-05-19
+
+### Stable release
+
+- First stable npm release of `@yoch/ng-smart-table` (Angular 18+, partial Ivy / APF).
+- **`settings.rowIdentityKey`**: optional field name to match rows by value when object references differ.
+- **Server multi-column sort**: repeated sort query parameters via `HttpParams.append`.
+- **Selection events**: user toggles emit either `rowSelect` or `rowDeselect` (not both); `rowDeselect` fires when a row becomes unselected.
+- **Dynamic custom components**: subscriptions cleaned up; components recreated when cell/column changes.
+- Public TypeScript types for settings, columns, and row events.
+- Packaged README, [MIGRATION.md](MIGRATION.md), refreshed demo links, and release workflow.
+
 ## [2.0.0-beta.2] - 2026-05-18
 
 ### Chore

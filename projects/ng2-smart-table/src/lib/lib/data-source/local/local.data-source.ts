@@ -3,6 +3,7 @@ import { LocalFilter } from './local.filter';
 import { LocalPager } from './local.pager';
 import { DataSource } from '../data-source';
 import { deepExtend } from '../../helpers';
+import { findRowIndex } from '../../row-identity';
 
 export class LocalDataSource extends DataSource {
 
@@ -14,11 +15,25 @@ export class LocalDataSource extends DataSource {
     andOperator: true,
   };
   protected pagingConf: any = {};
+  /** When set, find/update/remove match rows by this field value, not only by reference */
+  protected rowIdentityKey?: string;
 
-  constructor(data: Array<any> = []) {
+  constructor(data: Array<any> = [], rowIdentityKey?: string) {
     super();
 
     this.data = data;
+    if (rowIdentityKey) {
+      this.rowIdentityKey = rowIdentityKey;
+    }
+  }
+
+  setRowIdentityKey(key: string | null | undefined): this {
+    this.rowIdentityKey = key || undefined;
+    return this;
+  }
+
+  getRowIdentityKey(): string | undefined {
+    return this.rowIdentityKey;
   }
 
   load(data: Array<any>): Promise<any> {
@@ -48,7 +63,10 @@ export class LocalDataSource extends DataSource {
   }
 
   remove(element: any): Promise<any> {
-    this.data = this.data.filter(el => el !== element);
+    const idx = findRowIndex(this.data, element, this.rowIdentityKey);
+    if (idx >= 0) {
+      this.data.splice(idx, 1);
+    }
 
     return super.remove(element);
   }
@@ -63,9 +81,9 @@ export class LocalDataSource extends DataSource {
   }
 
   find(element: any): Promise<any> {
-    const found = this.data.find(el => el === element);
-    if (found) {
-      return Promise.resolve(found);
+    const idx = findRowIndex(this.data, element, this.rowIdentityKey);
+    if (idx >= 0) {
+      return Promise.resolve(this.data[idx]);
     }
 
     return Promise.reject(new Error('Element was not found in the dataset'));

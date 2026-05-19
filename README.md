@@ -26,6 +26,12 @@ export class AppModule {}
 
 Historical selectors and symbols are unchanged: `Ng2SmartTableModule`, `Ng2SmartTableComponent`, `LocalDataSource`, `ServerDataSource`, etc.
 
+### Row identity (`rowIdentityKey`)
+
+When rows are reloaded from the server, object references change. Set `rowIdentityKey` in `settings` (e.g. `'id'`) so update/remove still match rows by field value.
+
+Row clicks emit `rowSelect` when a row becomes selected and `rowDeselect` when it becomes unselected (toggle on the same row).
+
 ### `ServerDataSource` and HTTP
 
 Provide `HttpClient` in your application (`HttpClientModule` or `provideHttpClient()` depending on your Angular version).
@@ -60,9 +66,9 @@ npm run publish:dist      # publish (after npm login)
 5. `npm run consumer:smoke`
 6. `npm audit --omit=dev` and `npm run audit:pack` — workspace tooling and published package vulnerabilities
 
-Publish a prerelease first with `npm run publish:beta` (updates both `next` and `latest`), then promote to stable with `npm run publish:dist` after validating in a real app.
+Publish a prerelease with `npm run publish:beta` (dist-tag `next` only), then promote to stable with `npm run publish:dist` (`latest`).
 
-See [DEV_DOCS.md](DEV_DOCS.md) for release details.
+See [DEV_DOCS.md](DEV_DOCS.md) and [MIGRATION.md](MIGRATION.md) for release and upgrade details.
 
 ## License
 

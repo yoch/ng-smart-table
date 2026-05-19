@@ -1,5 +1,6 @@
 import { Row } from './row';
 import { Column } from './column';
+import { rowsMatch } from '../row-identity';
 
 export class DataSet {
 
@@ -11,7 +12,11 @@ export class DataSet {
   protected selectedRow: Row;
   protected willSelect: string;
 
-  constructor(data: Array<any> = [], protected columnSettings: Object) {
+  constructor(
+    data: Array<any> = [],
+    protected columnSettings: Object,
+    protected rowIdentityKey?: string,
+  ) {
     this.createColumns(columnSettings);
     this.setData(data);
 
@@ -40,7 +45,7 @@ export class DataSet {
   }
 
   findRowByData(data: any): Row {
-    return this.rows.find((row: Row) => row.getData() === data);
+    return this.rows.find((row: Row) => rowsMatch(row.getData(), data, this.rowIdentityKey));
   }
 
   deselectAll() {

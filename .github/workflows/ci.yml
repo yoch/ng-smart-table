@@ -74,8 +74,8 @@ jobs:
   consumer-smoke:
     needs: [pack]
     runs-on: ubuntu-latest
-    # Node matrix; for Angular 20/21+ duplicate the consumer folder with other peerDeps
-    # or generate the app via `ng new` in a dedicated job once compatibility is validated.
+    # Node matrix. Peer range is >=18 <22; consumer-smoke currently pins Angular 18.
+    # Add per-major consumer folders when validating Angular 19–21.
     strategy:
       matrix:
         node-version: ['20', '22']

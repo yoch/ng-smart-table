@@ -59,6 +59,10 @@ consumer-smoke/package-lock.json
 !.vscode/extensions.json
 .history/*
 
+# --- Internal maintainer docs (not shipped on npm) ---
+/EVOLUTION.md
+/RELEASE_CHECKLIST.md
+
 # --- misc ---
 /.sass-cache
 /connect.lock

@@ -15,7 +15,6 @@ VERSION="$(node -p "require('./dist/ng2-smart-table/package.json').version")"
 NAME="$(node -p "require('./dist/ng2-smart-table/package.json').name")"
 
 npm publish --access=public --tag next "$PKG"
-# Keep `latest` in sync with the current beta so `npm install @yoch/ng-smart-table` matches @next.
-npm dist-tag add "${NAME}@${VERSION}" latest
 
-echo "Published ${NAME}@${VERSION} (dist-tags: next, latest)"
+echo "Published ${NAME}@${VERSION} (dist-tag: next)"
+echo "Stable installs use: npm install ${NAME}@latest"

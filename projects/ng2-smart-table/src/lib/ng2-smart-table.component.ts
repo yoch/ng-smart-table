@@ -91,6 +91,7 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
       page: 1,
       perPage: 10,
     },
+    rowIdentityKey: null,
     rowClassFunction: () => '',
   };
 
@@ -178,7 +179,7 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
     if (this.grid.getSetting('selectMode') !== 'multi') {
       this.grid.selectRow(row);
       this.emitUserSelectRow(row);
-      this.emitSelectRow(row);
+      this.emitRowSelectionChange(row);
     }
   }
 
@@ -189,7 +190,7 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
   multipleSelectRow(row: Row) {
     this.grid.multipleSelectRow(row);
     this.emitUserSelectRow(row);
-    this.emitSelectRow(row);
+    this.emitRowSelectionChange(row);
   }
 
   onSelectAllRows(_$event: any) {
@@ -202,7 +203,7 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
 
   onSelectRow(row: Row) {
     this.grid.selectRow(row);
-    this.emitSelectRow(row);
+    this.emitRowSelectionChange(row);
   }
 
   onMultipleSelectRow(row: Row) {
@@ -218,13 +219,18 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
   }
 
   prepareSource(): DataSource {
+    const rowIdentityKey = this.prepareSettings()['rowIdentityKey'] as string | null | undefined;
+
     if (this.source instanceof DataSource) {
+      if (this.source instanceof LocalDataSource) {
+        this.source.setRowIdentityKey(rowIdentityKey || undefined);
+      }
       return this.source;
     } else if (this.source instanceof Array) {
-      return new LocalDataSource(this.source);
+      return new LocalDataSource(this.source, rowIdentityKey || undefined);
     }
 
-    return new LocalDataSource();
+    return new LocalDataSource([], rowIdentityKey || undefined);
   }
 
   prepareSettings(): Object {
@@ -258,6 +264,20 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
     });
   }
 
+  /** User or programmatic toggle: emit exactly one of rowSelect / rowDeselect. */
+  private emitRowSelectionChange(row: Row | null): void {
+    const data = {
+      data: row ? row.getData() : null,
+      isSelected: row ? row.getIsSelected() : null,
+      source: this.source,
+    };
+    if (row?.getIsSelected()) {
+      this.rowSelect.emit(data);
+    } else {
+      this.rowDeselect.emit(data);
+    }
+  }
+
   private emitSelectRow(row: Row) {
     const data = {
       data: row ? row.getData() : null,
@@ -265,12 +285,9 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
       source: this.source,
     };
     this.rowSelect.emit(data);
-    if (!row?.isSelected) {
-      this.rowDeselect.emit(data);
-    }
   }
 
-  private emitDeselectRow(row: Row): void {
+  private emitDeselectRow(row: Row | null): void {
     this.rowDeselect.emit({
       data: row ? row.getData() : null,
       isSelected: row ? row.getIsSelected() : null,

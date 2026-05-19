@@ -29,7 +29,7 @@ export class AdvancedExamplesCustomEditorComponent {
       id: 3,
       name: 'Clementine Bauch',
       username: 'Samantha',
-      link: '<a href="https://github.com/akveo/ng2-smart-table">Ng2 smart table</a>',
+      link: '<a href="https://github.com/yoch/ng-smart-table">Ng2 smart table</a>',
     },
     {
       id: 4,
