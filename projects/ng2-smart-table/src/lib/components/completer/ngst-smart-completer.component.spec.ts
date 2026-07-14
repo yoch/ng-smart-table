@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { NgstSmartCompleterComponent } from './ngst-smart-completer.component';
@@ -23,32 +23,31 @@ describe('NgstSmartCompleterComponent', () => {
     comp.pause = 0;
   });
 
-  it('should list matches on input', fakeAsync(() => {
+  it('should list matches on input', async () => {
     fixture.detectChanges();
-    tick(); // flush ngOnInit queueMicrotask
+    await Promise.resolve(); // flush ngOnInit queueMicrotask
     const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
     input.value = 'al';
     input.dispatchEvent(new Event('input'));
     (comp as any).onTextChange('al');
-    tick(0);
+    await fixture.whenStable();
     expect(comp.items.length).toBe(1);
-  }));
+  });
 
-  it('pick sets value and emits selected', fakeAsync(() => {
+  it('pick sets value and emits selected', () => {
     fixture.detectChanges();
-    spyOn(comp.selected, 'emit');
+    vi.spyOn(comp.selected, 'emit').mockReturnValue(undefined);
     const ev = new MouseEvent('mousedown');
     comp.pick({ title: 'Z' }, ev);
     expect(comp.text).toBe('Z');
     expect(comp.selected.emit).toHaveBeenCalled();
-    tick(200);
-  }));
+  });
 
-  it('respects minSearchLength', fakeAsync(() => {
+  it('respects minSearchLength', async () => {
     comp.minSearchLength = 3;
     fixture.detectChanges();
     (comp as any).onTextChange('ab');
-    tick(0);
+    await fixture.whenStable();
     expect(comp.items.length).toBe(0);
-  }));
+  });
 });

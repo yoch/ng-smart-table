@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { NgstSmartCompleterComponent } from '../../completer/ngst-smart-completer.component';
@@ -21,7 +21,7 @@ describe('CompleterFilterComponent', () => {
     comp = fixture.componentInstance;
   });
 
-  it('builds dataService from searchFields array and emits filter on selection', fakeAsync(() => {
+  it('builds dataService from searchFields array and emits filter on selection', async () => {
     const completer = {
       data: [{ city: 'Paris' }],
       searchFields: ['city'],
@@ -31,14 +31,15 @@ describe('CompleterFilterComponent', () => {
       id: 'city',
       getFilterConfig: () => ({ completer }),
     } as any;
-    spyOn(comp.filter, 'emit');
+    comp.delay = 0;
+    vi.spyOn(comp.filter, 'emit').mockReturnValue(undefined);
 
     comp.ngOnInit();
     fixture.detectChanges();
 
     comp.completerContent.next({ title: 'Paris' });
-    tick(400);
+    await new Promise((resolve) => setTimeout(resolve, 0));
     expect(comp.query).toBe('Paris');
     expect(comp.filter.emit).toHaveBeenCalled();
-  }));
+  });
 });

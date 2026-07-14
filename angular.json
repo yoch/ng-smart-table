@@ -25,11 +25,11 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/ng2-smart-table/src/test.ts",
             "tsConfig": "projects/ng2-smart-table/tsconfig.spec.json",
-            "karmaConfig": "projects/ng2-smart-table/karma.conf.js"
+            "buildTarget": ":build:development",
+            "runner": "vitest"
           }
         },
         "lint": {
@@ -97,6 +97,12 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "testing": {
+              "aot": false,
+              "optimization": false,
+              "extractLicenses": false,
+              "styles": []
             }
           },
           "defaultConfiguration": "production"
@@ -123,18 +129,11 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/demo/src/test.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/demo/tsconfig.spec.json",
-            "karmaConfig": "projects/demo/karma.conf.js",
-            "assets": [
-              "projects/demo/src/favicon.ico",
-              "projects/demo/src/assets"
-            ],
-            "styles": ["projects/demo/src/styles.css"],
-            "scripts": []
+            "buildTarget": ":build:testing",
+            "runner": "vitest"
           }
         },
         "lint": {
