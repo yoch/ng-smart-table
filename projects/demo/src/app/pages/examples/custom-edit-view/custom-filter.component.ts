@@ -1,10 +1,12 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { DefaultFilter } from '@yoch/ng-smart-table';
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <input 
       #number

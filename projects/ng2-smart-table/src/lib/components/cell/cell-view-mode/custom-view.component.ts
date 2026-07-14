@@ -6,13 +6,16 @@ import {
   ViewContainerRef,
   OnInit,
   OnDestroy,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { Cell } from '../../../lib/data-set/cell';
 import { ViewCell } from './view-cell';
 
 @Component({
+  standalone: false,
   selector: 'custom-view-component',
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng-template #dynamicTarget></ng-template>
   `,

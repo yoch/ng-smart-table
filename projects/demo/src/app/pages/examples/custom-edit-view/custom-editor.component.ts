@@ -1,7 +1,9 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultEditor } from '@yoch/ng-smart-table';
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     Name: <input [ngClass]="inputClass"
             #name

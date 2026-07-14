@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { DefaultEditor } from './default-editor';
 
 @Component({
+  standalone: false,
   selector: 'textarea-editor',
   styleUrls: ['./editor.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <textarea [ngClass]="inputClass"
               class="form-control"

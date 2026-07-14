@@ -1,6 +1,6 @@
 # `@yoch/ng-smart-table`
 
-Angular data table (modern fork of **ng2-smart-table**) for **Angular 18+**.
+Angular data table (modern fork of **ng2-smart-table**) for **Angular 18+** (built with Angular 22).
 
 ## Install
 
@@ -8,7 +8,7 @@ Angular data table (modern fork of **ng2-smart-table**) for **Angular 18+**.
 npm install @yoch/ng-smart-table
 ```
 
-Peers: `@angular/common`, `@angular/core`, `@angular/forms` `>=18 <22`, `rxjs` `^7.8.0`.
+Peers: `@angular/common`, `@angular/core`, `@angular/forms` `>=18 <23`, `rxjs` `^7.8.0`.
 
 ## Quick start
 

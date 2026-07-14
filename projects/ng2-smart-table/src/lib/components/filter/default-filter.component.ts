@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import {FilterDefault} from "./filter-default";
 
 @Component({
+  standalone: false,
   selector: 'default-table-filter',
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng-container [ngSwitch]="column.getFilterType()">
       <select-filter *ngSwitchCase="'list'"

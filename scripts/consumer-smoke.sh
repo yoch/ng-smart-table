@@ -4,6 +4,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 npm run build:lib
+bash scripts/patch-fesm-change-detection.sh
 rm -rf dist-pack && mkdir -p dist-pack
 npm pack ./dist/ng2-smart-table --pack-destination dist-pack
 shopt -s nullglob

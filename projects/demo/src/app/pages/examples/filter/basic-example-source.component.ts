@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { LocalDataSource } from '@yoch/ng-smart-table';
 
 @Component({
+  standalone: false,
   selector: 'basic-example-source',
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
     <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>

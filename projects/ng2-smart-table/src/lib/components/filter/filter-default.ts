@@ -1,9 +1,11 @@
-import { Output, EventEmitter, Input, Component } from '@angular/core';
+import { Output, EventEmitter, Input, Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { Column } from '../../lib/data-set/column';
 import { DataSource } from '../../lib/data-source/data-source';
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: '',
 })
 export class FilterDefault {

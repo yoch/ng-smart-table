@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { NgxTableCompleterService } from '../../completer/ngx-table-completer.service';
 
 import { DefaultEditor } from './default-editor';
 
 @Component({
+  standalone: false,
   selector: 'completer-editor',
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ngst-smart-completer [(ngModel)]="completerStr"
                    [dataService]="cell.getColumn().getConfig().completer.dataService"

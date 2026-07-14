@@ -1,11 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 import { Grid } from '../../lib/grid';
 import { Cell } from '../../lib/data-set/cell';
 import { Row } from '../../lib/data-set/row';
 
 @Component({
+  standalone: false,
   selector: 'ng2-smart-table-cell',
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <table-cell-view-mode *ngIf="!isInEditing" [cell]="cell"></table-cell-view-mode>
     <table-cell-edit-mode *ngIf="isInEditing" [cell]="cell"

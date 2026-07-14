@@ -37,6 +37,9 @@ dist-pack/
 consumer-smoke/node_modules/
 consumer-smoke/dist/
 consumer-smoke/package-lock.json
+consumer-smoke-ng18/node_modules/
+consumer-smoke-ng18/dist/
+consumer-smoke-ng18/package-lock.json
 
 # --- TypeScript / tooling ---
 *.tsbuildinfo

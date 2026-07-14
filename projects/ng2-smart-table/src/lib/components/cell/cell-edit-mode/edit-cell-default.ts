@@ -1,8 +1,10 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { Cell } from '../../../lib/data-set/cell';
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: ''
 })
 export class EditCellDefault {

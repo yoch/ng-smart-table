@@ -1,11 +1,13 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { DataSource } from '../../lib/data-source/data-source';
 
 @Component({
+  standalone: false,
   selector: 'ng2-smart-table-pager',
   styleUrls: ['./pager.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <nav *ngIf="shouldShow()" class="ng2-smart-pagination-nav">
       <ul class="ng2-smart-pagination pagination">

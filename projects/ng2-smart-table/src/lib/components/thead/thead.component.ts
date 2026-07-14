@@ -1,10 +1,12 @@
-import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 import { Grid } from '../../lib/grid';
 import { DataSource } from '../../lib/data-source/data-source';
 
 @Component({
+    standalone: false,
     selector: '[ng2-st-thead]',
+    changeDetection: ChangeDetectionStrategy.Default,
     templateUrl: './thead.component.html',
 })
 export class Ng2SmartTableTheadComponent implements OnChanges {

@@ -18,7 +18,9 @@
 
 - `npm run build:ci` — lib + demo build and library unit tests.
 - `npm run pack:lib` — tarball in `dist-pack/` (copy as `lib.tgz` for `consumer-smoke`).
-- `npm run consumer:smoke` — installs the packaged tarball in the `consumer-smoke` mini-app and verifies a production build.
+- `npm run consumer:smoke` — installs the packaged tarball in the Angular 22 `consumer-smoke` mini-app and verifies a production build.
+- `npm run consumer:smoke:ng18` — same against Angular 18 (`consumer-smoke-ng18`).
+- `scripts/patch-fesm-change-detection.sh` — run after `build:lib` before pack; Angular 22 emits `Eager` in FESM metadata, which Angular 18–20 reject.
 - `consumer-smoke` has no versioned `package-lock.json`: the `file:../dist-pack/lib.tgz` dependency changes integrity on every `npm pack`; CI uses `npm install`, not `npm ci`.
 - `npm audit --omit=dev` — clean on the workspace (Angular and tooling are devDependencies only).
 - `npm run audit:pack` — audits published runtime deps (`lodash-es`, `tslib`) by installing the packaged tarball.

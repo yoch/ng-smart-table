@@ -6,7 +6,10 @@
     "declarationMap": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "ES2022"]
+    "lib": [
+      "dom",
+      "ES2022"
+    ]
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
@@ -15,7 +18,6 @@
     "enableResourceInlining": true
   },
   "exclude": [
-    "src/test.ts",
     "**/*.spec.ts"
   ]
 }

@@ -1,7 +1,8 @@
 {
   "name": "@yoch/ng-smart-table",
-  "version": "2.0.0",
-  "description": "Angular Smart Table (modern fork of ng2-smart-table)",
+  "version": "2.1.0",
+  "description": "Angular Smart Table for Angular 18–22 (modern fork of ng2-smart-table)",
+  "sideEffects": false,
   "keywords": [
     "angular",
     "table",
@@ -28,9 +29,9 @@
     "tslib": "^2.6.3"
   },
   "peerDependencies": {
-    "@angular/common": ">=18 <22",
-    "@angular/core": ">=18 <22",
-    "@angular/forms": ">=18 <22",
+    "@angular/common": ">=18 <23",
+    "@angular/core": ">=18 <23",
+    "@angular/forms": ">=18 <23",
     "rxjs": "^7.8.0"
   }
 }

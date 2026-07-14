@@ -6,13 +6,16 @@ import {
   SimpleChanges,
   ViewChild,
   ViewContainerRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { FilterDefault } from './filter-default';
 
 @Component({
+  standalone: false,
   selector: 'custom-table-filter',
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `<ng-template #dynamicTarget></ng-template>`,
 })
 export class CustomFilterComponent extends FilterDefault implements OnChanges, OnDestroy {

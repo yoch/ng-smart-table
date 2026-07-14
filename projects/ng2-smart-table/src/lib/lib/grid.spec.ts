@@ -27,14 +27,14 @@ describe('Grid', () => {
 
   it('setSource swaps source; processDataChange applies filter payload', async () => {
     const ds1 = new LocalDataSource([{ id: 1 }]);
+    // LocalDataSource emits onChanged synchronously — rows are ready after construction.
     const grid = new Grid(ds1, baseSettings());
-    await firstValueFrom(ds1.onChanged().pipe(take(1)));
     expect(grid.getRows().length).toBe(1);
 
     const ds2 = new LocalDataSource([{ id: 2 }, { id: 3 }]);
     grid.setSource(ds2);
-    await firstValueFrom(ds2.onChanged().pipe(take(1)));
     expect((await ds2.getAll()).length).toBe(2);
+    expect(grid.getRows().length).toBe(2);
 
     grid.processDataChange({
       action: 'filter',
@@ -51,7 +51,7 @@ describe('Grid', () => {
     const ds = new LocalDataSource([{ id: 1 }]);
     const settings = { ...baseSettings(), pager: { display: true, page: 1, perPage: 10 } };
     const grid = new Grid(ds, settings);
-    await firstValueFrom(ds.onChanged().pipe(take(1)));
+    expect(grid.getRows().length).toBe(1);
 
     const added = firstValueFrom(ds.onChanged().pipe(take(1)));
     await ds.add({ id: 2 });
@@ -70,7 +70,7 @@ describe('Grid', () => {
   it('detach should unsubscribe from source onChanged', async () => {
     const ds = new LocalDataSource([{ id: 1 }]);
     const grid = new Grid(ds, baseSettings());
-    await firstValueFrom(ds.onChanged().pipe(take(1)));
+    expect(grid.getRows().length).toBe(1);
     grid.detach();
     await ds.add({ id: 99 });
     expect(grid.getRows().every((r) => r.getData().id !== 99)).toBe(true);
@@ -80,7 +80,7 @@ describe('Grid', () => {
     const ds = new LocalDataSource([{ id: 1 }]);
     const settings = { ...baseSettings(), pager: { display: true, page: 1, perPage: 10 } };
     const grid = new Grid(ds, settings);
-    await firstValueFrom(ds.onChanged().pipe(take(1)));
+    expect(grid.getRows().length).toBe(1);
     const afterPrepend = firstValueFrom(ds.onChanged().pipe(take(1)));
     await ds.prepend({ id: 0 });
     await afterPrepend;

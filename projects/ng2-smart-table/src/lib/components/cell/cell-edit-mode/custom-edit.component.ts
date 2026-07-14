@@ -6,13 +6,16 @@ import {
   SimpleChanges,
   OnChanges,
   OnDestroy,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { EditCellDefault } from './edit-cell-default';
 
 @Component({
+  standalone: false,
   selector: 'table-cell-custom-editor',
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng-template #dynamicTarget></ng-template>
   `,

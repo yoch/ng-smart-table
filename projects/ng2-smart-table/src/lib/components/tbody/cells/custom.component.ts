@@ -4,6 +4,7 @@ import { Row } from '../../../lib/data-set/row';
 import { Grid } from '../../../lib/grid';
 
 @Component({
+    standalone: false,
     selector: 'ng2-st-tbody-custom',
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
