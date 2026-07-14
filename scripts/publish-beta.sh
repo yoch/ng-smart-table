@@ -10,6 +10,7 @@ if ! npm whoami >/dev/null 2>&1; then
 fi
 
 npm run build:lib
+bash scripts/patch-fesm-change-detection.sh
 PKG=./dist/ng2-smart-table
 VERSION="$(node -p "require('./dist/ng2-smart-table/package.json').version")"
 NAME="$(node -p "require('./dist/ng2-smart-table/package.json').name")"
