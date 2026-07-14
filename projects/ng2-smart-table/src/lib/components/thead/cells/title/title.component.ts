@@ -1,12 +1,14 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { DataSource } from '../../../../lib/data-source/data-source';
 import { Column } from '../../../../lib/data-set/column';
 
 @Component({
+  standalone: false,
   selector: 'ng2-smart-table-title',
   styleUrls: ['./title.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <a href="#" *ngIf="column.isSortable"
                 (click)="_sort($event)"

@@ -1,6 +1,7 @@
 import { Directive, Input, Output, EventEmitter, HostListener, OnInit } from '@angular/core';
 
 @Directive({
+  standalone: false,
   selector: '[scrollPosition]',
 })
 export class ScrollPositionDirective implements OnInit {

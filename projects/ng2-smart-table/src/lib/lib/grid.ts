@@ -72,10 +72,11 @@ export class Grid {
   }
 
   setSource(source: DataSource) {
-    this.source = this.prepareSource(source);
+    this.source = source;
     this.applyRowIdentityKey(this.source);
     this.detach();
 
+    // Subscribe before refresh so the initial load emission is not lost.
     this.sourceOnChangedSubscription = this.source.onChanged().subscribe((changes: any) => this.processDataChange(changes));
 
     this.sourceOnUpdatedSubscription = this.source.onUpdated().subscribe((data: any) => {
@@ -84,6 +85,8 @@ export class Grid {
         changedRow.setData(data);
       }
     });
+
+    this.prepareSource(this.source);
   }
 
   getSetting(name: string, defaultValue?: any): any {

@@ -8,6 +8,7 @@ constructor() {
   sourceTemplate: `// ...
 
 @Component({
+  standalone: false,
   template: \`
     <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
   \`
@@ -15,7 +16,8 @@ constructor() {
 // ...`,
   search: `// ...
 
-@Component({ 
+@Component({
+  standalone: false,
   template: \`
     <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
     <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
@@ -69,6 +71,7 @@ constructor() {
   sourceFull: `import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'basic-example-source',
   styles: [],
   template: \`

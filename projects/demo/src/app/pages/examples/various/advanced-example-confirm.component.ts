@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { LocalDataSource } from '@yoch/ng-smart-table';
 
 @Component({
+  standalone: false,
   selector: 'advance-example-comfirm',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <ng2-smart-table
       [settings]="settings"

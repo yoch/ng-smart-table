@@ -1,11 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { distinctUntilChanged, debounceTime, skip } from 'rxjs/operators';
 
 import { DefaultFilter } from './default-filter';
 
 @Component({
+  standalone: false,
   selector: 'select-filter',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <select [ngClass]="inputClass"
             class="form-control"

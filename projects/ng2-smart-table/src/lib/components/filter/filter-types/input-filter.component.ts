@@ -1,11 +1,13 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { DefaultFilter } from './default-filter';
 
 @Component({
+  standalone: false,
   selector: 'input-filter',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <input
       [ngClass]="inputClass"

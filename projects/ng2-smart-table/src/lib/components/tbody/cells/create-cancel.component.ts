@@ -1,10 +1,12 @@
-import { Component, Input, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, EventEmitter, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 import { Grid } from '../../../lib/grid';
 import { Row } from '../../../lib/data-set/row';
 
 @Component({
+  standalone: false,
   selector: 'ng2-st-tbody-create-cancel',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <a href="#" class="ng2-smart-action ng2-smart-action-edit-save"
         [innerHTML]="saveButtonContent" (click)="onSave($event)"></a>

@@ -1,12 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 
 import { Grid } from '../../lib/grid';
 import { DataSource } from '../../lib/data-source/data-source';
 import { Cell } from '../../lib/data-set/cell';
 
 @Component({
+  standalone: false,
   selector: '[ng2-st-tbody]',
   styleUrls: ['./tbody.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './tbody.component.html',
 })
 export class Ng2SmartTableTbodyComponent implements OnChanges {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -10,6 +10,7 @@ import { FilterModule } from './filter.module';
 @Component({
   standalone: true,
   imports: [FilterModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <ng2-smart-table-filter
       [column]="col"

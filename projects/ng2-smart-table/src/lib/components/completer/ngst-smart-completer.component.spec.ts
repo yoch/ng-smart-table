@@ -25,12 +25,12 @@ describe('NgstSmartCompleterComponent', () => {
 
   it('should list matches on input', fakeAsync(() => {
     fixture.detectChanges();
+    tick(); // flush ngOnInit queueMicrotask
     const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
     input.value = 'al';
     input.dispatchEvent(new Event('input'));
     (comp as any).onTextChange('al');
     tick(0);
-    fixture.detectChanges();
     expect(comp.items.length).toBe(1);
   }));
 

@@ -36,6 +36,7 @@ export const DEMO_CODE_SAMPLES = {
   template: `// ...
 
 @Component({
+  standalone: false,
   template: \`
     <ng2-smart-table [settings]="settings"></ng2-smart-table>
   \`
@@ -67,14 +68,16 @@ export const DEMO_CODE_SAMPLES = {
   dataTemplate: `// ...
 
 @Component({
+  standalone: false,
   template: \`
     <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
   \`
-})
+}
 // ...`,
   basicFull: `import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'basic-example-data',
   styles: [],
   template: \`

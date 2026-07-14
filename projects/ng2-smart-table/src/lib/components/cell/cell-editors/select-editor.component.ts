@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { DefaultEditor } from './default-editor';
 
 @Component({
+  standalone: false,
   selector: 'select-editor',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <select [ngClass]="inputClass"
             class="form-control"

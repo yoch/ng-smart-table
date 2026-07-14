@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { FILTER_EXAMPLES_CODE_SAMPLES } from '../snippets/code-samples';
 
 @Component({
+  standalone: false,
   selector: 'filter-examples',
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './filter-examples.component.html',
 })
 export class FilterExamplesComponent {

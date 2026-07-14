@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'server-examples',
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './server-examples.component.html',
 })
 export class ServerExamplesComponent {

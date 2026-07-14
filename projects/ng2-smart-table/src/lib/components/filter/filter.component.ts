@@ -1,10 +1,12 @@
-import { Component, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnDestroy, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FilterDefault } from './filter-default';
 import { Subscription } from 'rxjs';
 
 @Component({
+  standalone: false,
   selector: 'ng2-smart-table-filter',
   styleUrls: ['./filter.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
       <div class="ng2-smart-filter" *ngIf="column.isFilterable" [ngSwitch]="column.getFilterType()">
         <custom-table-filter *ngSwitchCase="'custom'"

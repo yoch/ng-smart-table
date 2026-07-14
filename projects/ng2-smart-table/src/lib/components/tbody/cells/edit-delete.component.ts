@@ -5,6 +5,7 @@ import { Row } from '../../../lib/data-set/row';
 import { DataSource } from '../../../lib/data-source/data-source';
 
 @Component({
+  standalone: false,
   selector: 'ng2-st-tbody-edit-delete',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `

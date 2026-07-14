@@ -40,7 +40,7 @@ npm install @yoch/ng-smart-table@next
    import { Ng2SmartTableModule, LocalDataSource } from '@yoch/ng-smart-table';
    ```
 
-3. **Angular 18+** is required (`peerDependencies`: `@angular/*` `>=18 <22`).
+3. **Angular 18+** is required (`peerDependencies`: `@angular/*` `>=18 <23`). The library is compiled with Angular 22; validate your major with `npm run consumer:smoke` or a local install of the packaged tarball.
 
 4. **`ng2-completer`** is no longer required. Column `completer` editor/filter autocomplete is built in.
 

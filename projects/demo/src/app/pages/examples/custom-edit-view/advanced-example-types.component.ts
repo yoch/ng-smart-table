@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'advanced-example-types',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
   `,

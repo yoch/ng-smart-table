@@ -7,6 +7,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { of, Subject, Subscription } from 'rxjs';
@@ -51,6 +52,7 @@ export type NgstSmartCompleterSelectedEvent = { title: string; originalObject?: 
       </ul>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .ngst-completer {

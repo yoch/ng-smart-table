@@ -94,6 +94,21 @@ export class LocalDataSource extends DataSource {
     return Promise.resolve(this.prepareData(data));
   }
 
+  /**
+   * Emit synchronously so the grid is populated before Angular's first CD pass.
+   * Avoids ExpressionChangedAfterItHasBeenCheckedError (NG0100) on Angular 22+.
+   * ServerDataSource keeps the async Promise path from the base class.
+   */
+  protected emitOnChanged(action: string) {
+    this.onChangedSource.next({
+      action: action,
+      elements: this.prepareData(this.data.slice(0)),
+      paging: this.getPaging(),
+      filter: this.getFilter(),
+      sort: this.getSort(),
+    });
+  }
+
   getFilteredAndSorted(): Promise<any> {
     let data = this.data.slice(0);
     this.prepareData(data);

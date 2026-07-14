@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { LocalDataSource } from '@yoch/ng-smart-table';
 import { BasicExampleLoadService } from './basic-example-load.service';
 
 @Component({
+  standalone: false,
   selector: 'basic-example-load',
   providers: [BasicExampleLoadService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
   `,

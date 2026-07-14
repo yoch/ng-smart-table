@@ -3,6 +3,7 @@ import {Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Cell } from '../../../lib/data-set/cell';
 
 @Component({
+  standalone: false,
   selector: 'table-cell-view-mode',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `

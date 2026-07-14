@@ -16,13 +16,17 @@
     "moduleResolution": "bundler",
     "target": "ES2022",
     "module": "ES2022",
-    "lib": ["ES2022", "dom"],
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
     "baseUrl": "./",
     "paths": {
       "@yoch/ng-smart-table": [
         "projects/ng2-smart-table/src/public-api.ts"
       ]
-    }
+    },
+    "ignoreDeprecations": "6.0"
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

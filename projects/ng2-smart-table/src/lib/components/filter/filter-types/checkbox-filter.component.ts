@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { DefaultFilter } from './default-filter';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
+  standalone: false,
   selector: 'checkbox-filter',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <input type="checkbox" [formControl]="inputControl" [ngClass]="inputClass" class="form-control">
     <a href="#" *ngIf="filterActive"

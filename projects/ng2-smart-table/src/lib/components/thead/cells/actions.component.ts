@@ -1,9 +1,11 @@
-import {Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy} from '@angular/core';
 
 import { Grid } from '../../../lib/grid';
 
 @Component({
+  standalone: false,
   selector: 'ng2-st-actions',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <a href="#" class="ng2-smart-action ng2-smart-action-add-create"
         [innerHTML]="createButtonContent"

@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { EditCellDefault } from './edit-cell-default';
 
 @Component({
+  standalone: false,
   selector: 'table-cell-default-editor',
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './default-edit.component.html',
 })
 export class DefaultEditComponent extends EditCellDefault {

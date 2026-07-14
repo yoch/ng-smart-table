@@ -1,10 +1,11 @@
 # Angular Smart Table (`@yoch/ng-smart-table`)
 
-Modernized fork of **ng2-smart-table** (Akveo), built for **Angular 18+** (partial Ivy / current Angular Package Format).
+Modernized fork of **ng2-smart-table** (Akveo), built for **Angular 18+** (partial Ivy / current Angular Package Format). The workspace toolchain targets **Angular 22**.
 
 ## Prerequisites
 
-- Angular **18** or newer (**>=18 <22** via package `peerDependencies`; the library is compiled with this repo's Angular 18 toolchain — validate other major versions with the CI `consumer-smoke` job or `npm run consumer:smoke`).
+- Angular **18** or newer (**>=18 <23** via package `peerDependencies`; the library is compiled with this repo's Angular 22 toolchain — validate with the CI `consumer-smoke` job or `npm run consumer:smoke`).
+- **Node.js** 22+ for developing this repository (Angular 22 requirement).
 - **RxJS** 7.8+ (aligned with package `peerDependencies`).
 
 ## Installation

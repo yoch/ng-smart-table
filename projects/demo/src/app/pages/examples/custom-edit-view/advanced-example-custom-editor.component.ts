@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { CustomEditorComponent } from './custom-editor.component';
 import { CustomRenderComponent } from './custom-render.component';
 import { CustomFilterComponent } from './custom-filter.component';
 
 @Component({
+  standalone: false,
   selector: 'advanced-example-custom-editor',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
   `,

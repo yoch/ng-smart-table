@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
@@ -7,7 +7,9 @@ import { NgxTableCompleterService } from '../../completer/ngx-table-completer.se
 import { DefaultFilter } from './default-filter';
 
 @Component({
+  standalone: false,
   selector: 'completer-filter',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <ngst-smart-completer [(ngModel)]="query"
                    (ngModelChange)="inputTextChanged($event)"

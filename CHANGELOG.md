@@ -1,3 +1,14 @@
+## [2.1.0] - 2026-07-14
+
+### Angular 22
+
+- Workspace toolchain upgraded to **Angular 22** (TypeScript 6.0, Node 22+).
+- Peer dependencies widened to `@angular/*` **`>=18 <23`**.
+- Components declare `standalone: false` and `ChangeDetectionStrategy.Eager` for NgModule compatibility with Angular 22 defaults.
+- `LocalDataSource` emits `onChanged` synchronously so the grid is ready before the first change-detection pass.
+- `Grid.setSource` subscribes before the initial refresh so the first load is not dropped.
+- CI and `consumer-smoke` target Angular 22 (Node 22/24); ESLint migrated to flat config.
+
 ## [2.0.0] - 2026-05-19
 
 ### Stable release

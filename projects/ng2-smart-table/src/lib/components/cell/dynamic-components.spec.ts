@@ -1,4 +1,4 @@
-import { EventEmitter, Component } from '@angular/core';
+import { EventEmitter, Component, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -11,6 +11,8 @@ import { CustomViewComponent } from './cell-view-mode/custom-view.component';
 import { CustomFilterComponent } from '../filter/custom-filter.component';
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: '<span class="dyn-edit">e</span>',
 })
 class DynEditStub {
@@ -22,6 +24,8 @@ class DynEditStub {
 }
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: '<span class="dyn-view">{{ value }}</span>',
 })
 class DynViewStub {
@@ -30,6 +34,8 @@ class DynViewStub {
 }
 
 @Component({
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: '<span>f</span>',
 })
 class DynFilterStubNoChanges {

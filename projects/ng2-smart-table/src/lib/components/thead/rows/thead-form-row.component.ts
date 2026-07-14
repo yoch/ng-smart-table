@@ -1,11 +1,13 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 import { Grid } from '../../../lib/grid';
 import { Row } from '../../../lib/data-set/row';
 import { Cell } from '../../../lib/data-set/cell';
 
 @Component({
+  standalone: false,
   selector: '[ng2-st-thead-form-row]',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
       <td *ngIf=""></td>
       <td  *ngIf="showActionColumnLeft"  class="ng2-smart-actions">
