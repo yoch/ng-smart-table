@@ -28,13 +28,12 @@
     "changelog": "standard-changelog -p angular"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^22.0.6",
     "@angular-eslint/builder": "^22.1.0",
     "@angular-eslint/eslint-plugin": "^22.1.0",
     "@angular-eslint/eslint-plugin-template": "^22.1.0",
     "@angular-eslint/schematics": "^22.1.0",
     "@angular-eslint/template-parser": "^22.1.0",
-    "@angular/animations": "^22.0.6",
+    "@angular/build": "^22.0.6",
     "@angular/cli": "^22.0.6",
     "@angular/common": "^22.0.6",
     "@angular/compiler": "^22.0.6",
@@ -42,7 +41,6 @@
     "@angular/core": "^22.0.6",
     "@angular/forms": "^22.0.6",
     "@angular/platform-browser": "^22.0.6",
-    "@angular/platform-browser-dynamic": "^22.0.6",
     "@angular/router": "^22.0.6",
     "@eslint/js": "^9.39.5",
     "@types/jasmine": "~5.1.4",
@@ -50,7 +48,7 @@
     "@types/node": "^22.10.0",
     "@typescript-eslint/eslint-plugin": "^8.46.0",
     "@typescript-eslint/parser": "^8.46.0",
-    "angular-cli-ghpages": "^2.0.1",
+    "angular-cli-ghpages": "^3.1.0",
     "angular-eslint": "^22.1.0",
     "eslint": "^9.37.0",
     "highlight.js": "^11.10.0",
@@ -63,10 +61,17 @@
     "lodash-es": "^4.17.21",
     "ng-packagr": "^22.0.1",
     "rxjs": "~7.8.1",
-    "standard-changelog": "^2.0.27",
+    "standard-changelog": "^8.1.0",
     "tslib": "^2.6.3",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.64.0",
     "zone.js": "~0.15.1"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.5.6": true,
+    "esbuild@0.28.1": true,
+    "esbuild@0.27.7": true,
+    "lmdb@3.5.4": true,
+    "msgpackr-extract@3.0.4": true
   }
 }
