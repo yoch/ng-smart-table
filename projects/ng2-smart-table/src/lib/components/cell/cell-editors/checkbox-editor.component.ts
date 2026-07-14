@@ -6,7 +6,7 @@ import { DefaultEditor } from './default-editor';
   standalone: false,
   selector: 'checkbox-editor',
   styleUrls: ['./editor.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <input [ngClass]="inputClass"
            type="checkbox"

@@ -7,7 +7,7 @@ import { DataSource } from '../../lib/data-source/data-source';
   standalone: false,
   selector: 'ng2-smart-table-pager',
   styleUrls: ['./pager.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <nav *ngIf="shouldShow()" class="ng2-smart-pagination-nav">
       <ul class="ng2-smart-pagination pagination">

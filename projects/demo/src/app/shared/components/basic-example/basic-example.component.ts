@@ -3,7 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   standalone: false,
   selector: 'basic-example',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng2-smart-table [settings]="settings"></ng2-smart-table>
   `,

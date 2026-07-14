@@ -4,10 +4,12 @@
 
 - Workspace toolchain upgraded to **Angular 22** (TypeScript 6.0, Node 22+).
 - Peer dependencies widened to `@angular/*` **`>=18 <23`**.
-- Components declare `standalone: false` and `ChangeDetectionStrategy.Eager` for NgModule compatibility with Angular 22 defaults.
-- `LocalDataSource` emits `onChanged` synchronously so the grid is ready before the first change-detection pass.
+- Components declare `standalone: false` and `ChangeDetectionStrategy.Default` for NgModule compatibility with Angular 22 defaults (`Default` remains valid on Angular 18–22).
+- `LocalDataSource` emits `onChanged` synchronously on `load`/`refresh` only; filter/page/sort updates defer to the next microtask.
+- `Ng2SmartTableComponent` marks itself for check when the source emits so tbody bindings stay in sync without NG0100.
 - `Grid.setSource` subscribes before the initial refresh so the first load is not dropped.
-- CI and `consumer-smoke` target Angular 22 (Node 22/24); ESLint migrated to flat config.
+- CI `consumer-smoke` matrix validates **Angular 18** (`consumer-smoke-ng18`, Node 20) and **Angular 22** (`consumer-smoke`, Node 22/24).
+- Post-build patch rewrites `ChangeDetectionStrategy.Eager` → `Default` in the published FESM so Angular 18–20 consumers accept the bundle.
 
 ## [2.0.0] - 2026-05-19
 

@@ -8,7 +8,7 @@ import { Column } from '../../../../lib/data-set/column';
   standalone: false,
   selector: 'ng2-smart-table-title',
   styleUrls: ['./title.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <a href="#" *ngIf="column.isSortable"
                 (click)="_sort($event)"

@@ -7,7 +7,7 @@ import { DefaultFilter } from './default-filter';
 @Component({
   standalone: false,
   selector: 'input-filter',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <input
       [ngClass]="inputClass"

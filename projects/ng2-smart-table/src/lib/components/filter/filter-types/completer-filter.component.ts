@@ -9,7 +9,7 @@ import { DefaultFilter } from './default-filter';
 @Component({
   standalone: false,
   selector: 'completer-filter',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ngst-smart-completer [(ngModel)]="query"
                    (ngModelChange)="inputTextChanged($event)"

@@ -6,7 +6,7 @@ import { DataSource } from '../../../lib/data-source/data-source';
 @Component({
   standalone: false,
   selector: '[ng2-st-checkbox-select-all]',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <input type="checkbox" [ngModel]="isAllSelected">
   `,

@@ -6,7 +6,7 @@ import { DefaultEditor } from './default-editor';
   standalone: false,
   selector: 'textarea-editor',
   styleUrls: ['./editor.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <textarea [ngClass]="inputClass"
               class="form-control"

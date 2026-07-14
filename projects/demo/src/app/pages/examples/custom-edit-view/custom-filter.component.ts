@@ -6,7 +6,7 @@ import { DefaultFilter } from '@yoch/ng-smart-table';
 
 @Component({
   standalone: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <input 
       #number

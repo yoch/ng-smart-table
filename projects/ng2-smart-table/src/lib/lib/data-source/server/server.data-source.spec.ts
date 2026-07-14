@@ -96,4 +96,19 @@ describe('ServerDataSource', () => {
     req.flush([], { headers: { 'x-total-count': '0' } });
     await p;
   });
+
+  it('should fetch from server when filter emit triggers onChanged', async () => {
+    const ds = new ServerDataSource(http, { endPoint: '/api/items' });
+    let latest: { elements: unknown[] } | undefined;
+    ds.onChanged().subscribe((change) => {
+      latest = change;
+    });
+
+    ds.setFilter([{ field: 'name', search: 'bob' }], true, true);
+    const req = httpMock.expectOne((r) => r.url.startsWith('/api/items'));
+    req.flush([{ id: 1, name: 'bob' }], { headers: { 'x-total-count': '1' } });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(latest?.elements).toEqual([{ id: 1, name: 'bob' }]);
+  });
 });

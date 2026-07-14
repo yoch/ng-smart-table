@@ -5,7 +5,7 @@ import { ServerDataSource } from '@yoch/ng-smart-table';
 @Component({
   standalone: false,
   selector: 'advanced-example-server',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
   `,

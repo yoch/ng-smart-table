@@ -15,7 +15,7 @@ import { FilterDefault } from './filter-default';
 @Component({
   standalone: false,
   selector: 'custom-table-filter',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `<ng-template #dynamicTarget></ng-template>`,
 })
 export class CustomFilterComponent extends FilterDefault implements OnChanges, OnDestroy {

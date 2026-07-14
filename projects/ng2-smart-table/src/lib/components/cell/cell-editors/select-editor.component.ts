@@ -5,7 +5,7 @@ import { DefaultEditor } from './default-editor';
 @Component({
   standalone: false,
   selector: 'select-editor',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <select [ngClass]="inputClass"
             class="form-control"

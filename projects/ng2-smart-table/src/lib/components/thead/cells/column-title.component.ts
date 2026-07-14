@@ -6,7 +6,7 @@ import { DataSource } from '../../../lib/data-source/data-source';
 @Component({
   standalone: false,
   selector: 'ng2-st-column-title',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <div class="ng2-smart-title">
       <ng2-smart-table-title [source]="source" [column]="column" (sort)="sort.emit($event)"></ng2-smart-table-title>

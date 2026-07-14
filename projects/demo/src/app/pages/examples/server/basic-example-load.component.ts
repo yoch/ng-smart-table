@@ -7,7 +7,7 @@ import { BasicExampleLoadService } from './basic-example-load.service';
   standalone: false,
   selector: 'basic-example-load',
   providers: [BasicExampleLoadService],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
   `,

@@ -15,7 +15,7 @@ import { ViewCell } from './view-cell';
 @Component({
   standalone: false,
   selector: 'custom-view-component',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng-template #dynamicTarget></ng-template>
   `,

@@ -52,7 +52,7 @@ export type NgstSmartCompleterSelectedEvent = { title: string; originalObject?: 
       </ul>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   styles: [
     `
       .ngst-completer {

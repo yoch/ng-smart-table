@@ -116,4 +116,17 @@ export class ServerDataSource extends LocalDataSource {
 
     return httpParams;
   }
+
+  /**
+   * Server rows come from HTTP via getElements(); do not use LocalDataSource's synchronous local emit.
+   */
+  protected override emitOnChanged(action: string): void {
+    this.getElements().then((elements) => this.onChangedSource.next({
+      action: action,
+      elements: elements,
+      paging: this.getPaging(),
+      filter: this.getFilter(),
+      sort: this.getSort(),
+    }));
+  }
 }

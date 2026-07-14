@@ -4,7 +4,7 @@ import { Cell } from '../../../lib/data-set/cell';
 
 @Component({
   standalone: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: ''
 })
 export class EditCellDefault {

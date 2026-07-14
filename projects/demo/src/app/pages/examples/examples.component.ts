@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   standalone: false,
   selector: 'examples',
   styleUrls: ['./examples.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   templateUrl: 'examples.component.html',
 })
 export class ExamplesComponent {

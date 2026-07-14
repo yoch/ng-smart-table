@@ -4,7 +4,7 @@ import { ViewCell } from '@yoch/ng-smart-table';
 @Component({
   standalone: false,
   selector: 'button-view',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <button (click)="onClick()">{{ renderValue }}</button>
   `,
@@ -29,7 +29,7 @@ export class ButtonViewComponent implements ViewCell, OnInit {
 @Component({
   standalone: false,
   selector: 'basic-example-button-view',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
   `,

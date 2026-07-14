@@ -4,7 +4,7 @@ Modernized fork of **ng2-smart-table** (Akveo), built for **Angular 18+** (parti
 
 ## Prerequisites
 
-- Angular **18** or newer (**>=18 <23** via package `peerDependencies`; the library is compiled with this repo's Angular 22 toolchain — validate with the CI `consumer-smoke` job or `npm run consumer:smoke`).
+- Angular **18** or newer (**>=18 <23** via package `peerDependencies`; the library is compiled with this repo's Angular 22 toolchain — CI runs `consumer-smoke-ng18` and `consumer-smoke`, or locally `npm run consumer:smoke:ng18` / `npm run consumer:smoke`).
 - **Node.js** 22+ for developing this repository (Angular 22 requirement).
 - **RxJS** 7.8+ (aligned with package `peerDependencies`).
 

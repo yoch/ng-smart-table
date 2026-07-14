@@ -6,7 +6,7 @@ import { Row } from '../../../lib/data-set/row';
 @Component({
   standalone: false,
   selector: 'ng2-st-tbody-create-cancel',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <a href="#" class="ng2-smart-action ng2-smart-action-edit-save"
         [innerHTML]="saveButtonContent" (click)="onSave($event)"></a>

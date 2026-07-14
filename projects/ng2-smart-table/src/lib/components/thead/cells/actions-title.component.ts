@@ -1,11 +1,11 @@
-import {Component, Input, AfterViewInit, ElementRef, OnChanges, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 import { Grid } from '../../../lib/grid';
 
 @Component({
   standalone: false,
   selector: '[ng2-st-actions-title]',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <div class="ng2-smart-title">{{ actionsColumnTitle }}</div>
   `,

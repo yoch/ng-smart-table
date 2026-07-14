@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 import { Grid } from '../../../lib/grid';
 import { DataSource } from '../../../lib/data-source/data-source';
@@ -7,7 +7,7 @@ import { Column } from "../../../lib/data-set/column";
 @Component({
   standalone: false,
   selector: '[ng2-st-thead-filters-row]',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <th *ngIf="isMultiSelectVisible"></th>
     <th ng2-st-add-button *ngIf="showActionColumnLeft"

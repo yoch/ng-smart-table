@@ -7,7 +7,7 @@ import { DefaultFilter } from './default-filter';
 @Component({
   standalone: false,
   selector: 'select-filter',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <select [ngClass]="inputClass"
             class="form-control"

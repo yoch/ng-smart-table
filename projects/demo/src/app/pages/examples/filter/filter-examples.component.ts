@@ -5,7 +5,7 @@ import { FILTER_EXAMPLES_CODE_SAMPLES } from '../snippets/code-samples';
 @Component({
   standalone: false,
   selector: 'filter-examples',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   templateUrl: './filter-examples.component.html',
 })
 export class FilterExamplesComponent {

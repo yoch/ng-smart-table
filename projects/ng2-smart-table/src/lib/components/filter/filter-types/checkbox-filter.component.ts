@@ -7,7 +7,7 @@ import { debounceTime } from 'rxjs/operators';
 @Component({
   standalone: false,
   selector: 'checkbox-filter',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <input type="checkbox" [formControl]="inputControl" [ngClass]="inputClass" class="form-control">
     <a href="#" *ngIf="filterActive"

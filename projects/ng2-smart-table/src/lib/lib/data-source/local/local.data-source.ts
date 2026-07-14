@@ -97,16 +97,25 @@ export class LocalDataSource extends DataSource {
   /**
    * Emit synchronously so the grid is populated before Angular's first CD pass.
    * Avoids ExpressionChangedAfterItHasBeenCheckedError (NG0100) on Angular 22+.
-   * ServerDataSource keeps the async Promise path from the base class.
+   * ServerDataSource overrides this to keep the async HTTP path.
    */
   protected emitOnChanged(action: string) {
-    this.onChangedSource.next({
+    const payload = {
       action: action,
       elements: this.prepareData(this.data.slice(0)),
       paging: this.getPaging(),
       filter: this.getFilter(),
       sort: this.getSort(),
-    });
+    };
+    const emit = () => this.onChangedSource.next(payload);
+
+    // Initial grid population must be synchronous (NG0100 on first CD pass).
+    // Later filter/page/sort updates defer to the next microtask to avoid NG0100 in tbody.
+    if (action === 'load' || action === 'refresh') {
+      emit();
+    } else {
+      queueMicrotask(emit);
+    }
   }
 
   getFilteredAndSorted(): Promise<any> {

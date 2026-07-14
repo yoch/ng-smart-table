@@ -12,7 +12,7 @@ import { CustomFilterComponent } from '../filter/custom-filter.component';
 
 @Component({
   standalone: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: '<span class="dyn-edit">e</span>',
 })
 class DynEditStub {
@@ -25,7 +25,7 @@ class DynEditStub {
 
 @Component({
   standalone: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: '<span class="dyn-view">{{ value }}</span>',
 })
 class DynViewStub {
@@ -35,7 +35,7 @@ class DynViewStub {
 
 @Component({
   standalone: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: '<span>f</span>',
 })
 class DynFilterStubNoChanges {

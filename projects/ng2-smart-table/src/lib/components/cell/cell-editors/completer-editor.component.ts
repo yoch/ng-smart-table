@@ -7,7 +7,7 @@ import { DefaultEditor } from './default-editor';
 @Component({
   standalone: false,
   selector: 'completer-editor',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ngst-smart-completer [(ngModel)]="completerStr"
                    [dataService]="cell.getColumn().getConfig().completer.dataService"

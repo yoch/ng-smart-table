@@ -8,7 +8,7 @@ import { Cell } from '../../lib/data-set/cell';
   standalone: false,
   selector: '[ng2-st-tbody]',
   styleUrls: ['./tbody.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   templateUrl: './tbody.component.html',
 })
 export class Ng2SmartTableTbodyComponent implements OnChanges {

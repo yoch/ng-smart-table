@@ -5,7 +5,7 @@ import { Cell } from '../../../lib/data-set/cell';
 @Component({
   standalone: false,
   selector: 'table-cell-edit-mode',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
       <div [ngSwitch]="getEditorType()">
         <table-cell-custom-editor *ngSwitchCase="'custom'"

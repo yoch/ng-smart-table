@@ -5,7 +5,7 @@ import { Column } from '../../../lib/data-set/column';
 
 @Component({
   standalone: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: '',
 })
 export class DefaultFilter implements Filter, OnDestroy {

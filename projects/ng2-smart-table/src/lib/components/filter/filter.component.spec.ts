@@ -10,7 +10,7 @@ import { FilterModule } from './filter.module';
 @Component({
   standalone: true,
   imports: [FilterModule],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng2-smart-table-filter
       [column]="col"

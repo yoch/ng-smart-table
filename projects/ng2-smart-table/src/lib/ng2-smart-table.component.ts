@@ -1,4 +1,4 @@
-import { Component, Input, Output, SimpleChange, EventEmitter, OnChanges, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, Output, SimpleChange, EventEmitter, OnChanges, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -12,7 +12,7 @@ import { LocalDataSource } from './lib/data-source/local/local.data-source';
   standalone: false,
   selector: 'ng2-smart-table',
   styleUrls: ['./ng2-smart-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   templateUrl: './ng2-smart-table.component.html',
 })
 export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
@@ -101,7 +101,10 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
 
   private onSelectRowSubscription: Subscription;
   private onDeselectRowSubscription: Subscription;
+  private sourceDataSubscription: Subscription;
   private destroyed$: Subject<void> = new Subject<void>();
+
+  constructor(private readonly cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
     if (this.grid) {
@@ -111,6 +114,7 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
       if (changes['source']) {
         this.source = this.prepareSource();
         this.grid.setSource(this.source);
+        this.subscribeToSourceDataChanges();
       }
     } else {
       this.initGrid();
@@ -125,6 +129,7 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.sourceDataSubscription?.unsubscribe();
     this.grid?.detach();
     this.destroyed$.next();
     this.destroyed$.complete();
@@ -218,6 +223,7 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
 
     this.subscribeToOnSelectRow();
     this.subscribeToOnDeselectRow();
+    this.subscribeToSourceDataChanges();
   }
 
   prepareSource(): DataSource {
@@ -322,6 +328,16 @@ export class Ng2SmartTableComponent implements OnChanges, OnDestroy {
       .subscribe((row) => {
         this.emitDeselectRow(row);
       });
+  }
+
+  private subscribeToSourceDataChanges(): void {
+    this.sourceDataSubscription?.unsubscribe();
+    if (!this.source) {
+      return;
+    }
+    this.sourceDataSubscription = this.source.onChanged().subscribe(() => {
+      this.cdr.markForCheck();
+    });
   }
 
 }

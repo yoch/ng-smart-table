@@ -5,7 +5,7 @@ import { LocalDataSource } from '@yoch/ng-smart-table';
 @Component({
   standalone: false,
   selector: 'advance-example-comfirm',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng2-smart-table
       [settings]="settings"

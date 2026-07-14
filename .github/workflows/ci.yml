@@ -61,7 +61,9 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - run: npm ci
-      - run: npm run pack:lib
+      - run: npm run build:lib
+      - run: bash scripts/patch-fesm-change-detection.sh
+      - run: mkdir -p dist-pack && npm pack ./dist/ng2-smart-table --pack-destination dist-pack
       - name: Expose lib.tgz for consumers
         run: |
           f="$(ls -1 dist-pack/*.tgz | head -1)"
@@ -74,10 +76,21 @@ jobs:
   consumer-smoke:
     needs: [pack]
     runs-on: ubuntu-latest
-    # Peer range is >=18 <23; consumer-smoke validates Angular 22 (workspace toolchain).
+    # Peer range is >=18 <23; matrix validates Angular 18 and 22 consumers.
     strategy:
+      fail-fast: false
       matrix:
-        node-version: ['22', '24']
+        include:
+          - angular-version: '18'
+            consumer-dir: consumer-smoke-ng18
+            node-version: '20'
+          - angular-version: '22'
+            consumer-dir: consumer-smoke
+            node-version: '22'
+          - angular-version: '22'
+            consumer-dir: consumer-smoke
+            node-version: '24'
+    name: consumer-smoke (Angular ${{ matrix.angular-version }}, Node ${{ matrix.node-version }})
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -90,7 +103,7 @@ jobs:
       - name: Install CI tarball (no lockfile pinned to lib.tgz)
         run: |
           test -f dist-pack/lib.tgz
-          cd consumer-smoke
+          cd "${{ matrix.consumer-dir }}"
           rm -rf node_modules
           npm install --no-audit --no-fund
-      - run: cd consumer-smoke && npm run build
+      - run: cd "${{ matrix.consumer-dir }}" && npm run build

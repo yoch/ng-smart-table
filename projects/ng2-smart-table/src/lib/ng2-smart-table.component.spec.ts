@@ -135,19 +135,11 @@ describe('Ng2SmartTableComponent', () => {
     );
     expect(fixture.nativeElement.querySelectorAll('tr.ng2-smart-row').length).toBe(2);
 
-    // Apply filter then re-render so FilterComponent bindings stay stable (avoids NG0100).
+    // Apply filter then refresh the view.
     ds.setFilter([{ field: 'name', search: 'foo' }], true, true);
+    await fixture.whenStable();
+    fixture.detectChanges();
     expect(component.grid.getRows().length).toBe(1);
-    await renderTable(
-      {
-        ...baseSettings(),
-        columns: {
-          id: { title: 'ID' },
-          name: { title: 'Name', filter: true },
-        },
-      },
-      ds,
-    );
     expect(fixture.nativeElement.querySelectorAll('tr.ng2-smart-row').length).toBe(1);
   });
 
@@ -164,14 +156,9 @@ describe('Ng2SmartTableComponent', () => {
     expect(fixture.nativeElement.querySelectorAll('tr.ng2-smart-row').length).toBe(10);
 
     ds.setPage(2);
+    await fixture.whenStable();
+    fixture.detectChanges();
     expect(component.grid.getRows().length).toBe(5);
-    await renderTable(
-      {
-        ...baseSettings(),
-        pager: { display: true, page: 2, perPage: 10 },
-      },
-      ds,
-    );
     expect(fixture.nativeElement.querySelectorAll('tr.ng2-smart-row').length).toBe(5);
   });
 

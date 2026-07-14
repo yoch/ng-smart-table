@@ -7,7 +7,7 @@ import { Cell } from '../../../lib/data-set/cell';
 @Component({
   standalone: false,
   selector: '[ng2-st-thead-form-row]',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
       <td *ngIf=""></td>
       <td  *ngIf="showActionColumnLeft"  class="ng2-smart-actions">

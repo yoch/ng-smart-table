@@ -6,7 +6,7 @@ import { DataSource } from '../../../lib/data-source/data-source';
 @Component({
   standalone: false,
   selector: '[ng2-st-add-button]',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <a *ngIf="isActionAdd" href="#" class="ng2-smart-action ng2-smart-action-add-add"
         [innerHTML]="addNewButtonContent" (click)="onAdd($event)"></a>

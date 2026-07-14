@@ -7,7 +7,7 @@ import { CustomFilterComponent } from './custom-filter.component';
 @Component({
   standalone: false,
   selector: 'advanced-example-custom-editor',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
   `,

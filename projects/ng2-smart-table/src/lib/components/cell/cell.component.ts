@@ -7,7 +7,7 @@ import { Row } from '../../lib/data-set/row';
 @Component({
   standalone: false,
   selector: 'ng2-smart-table-cell',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: `
     <table-cell-view-mode *ngIf="!isInEditing" [cell]="cell"></table-cell-view-mode>
     <table-cell-edit-mode *ngIf="isInEditing" [cell]="cell"

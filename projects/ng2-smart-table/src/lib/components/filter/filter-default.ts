@@ -5,7 +5,7 @@ import { DataSource } from '../../lib/data-source/data-source';
 
 @Component({
   standalone: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.Default,
   template: '',
 })
 export class FilterDefault {
